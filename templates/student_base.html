@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load staticfiles %}
+{% block content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <style>
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+</style>
+
+    <script>
+    function send_follow_request(expert_id) {
+        $.ajax({url: "/send_follow_request/"+expert_id, success: function(result){
+
+            }
+        });
+    }
+    function change_status(t) {
+        if(t.checked)
+        {
+            $('#online_status').show()
+            $('#offline_status').hide()
+
+        }
+        else{
+           $('#online_status').hide()
+            $('#offline_status').show()
+        }
+    }
+    </script>
+<div class="wrapper">
+
+  <header class="main-header" style="position: fixed">
+    <!-- Logo -->
+    <a href="/visitor" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini" >CORHIKE</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>CORHIKE</b></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-fixed-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Notifications: style can be found in dropdown.less -->
+          <li class="dropdown notifications-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">{{ news_count }}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have {{ news_count }} notifications</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                    {% for n in news %}
+                         <li>
+                    <a href="#">
+                      <i class="fa fa-users text-aqua"></i> {{ n.news }}
+                    </a>
+                  </li>
+                    {% endfor %}
+
+                </ul>
+              </li>
+              <li class="footer"><a href="/notification_student">View all</a><a href="/clear_notification_student_all">Clear all</a></li>
+            </ul>
+          </li>
+          <!-- Tasks: style can be found in dropdown.less -->
+
+        <li class=" notifications-menu">
+            <a href="/student_index" class="fa fa-home fa-lg">
+            </a>
+
+        </li>
+
+        <li class=" notifications-menu">
+            <a href="/student_index#expert">Expert
+            </a>
+
+        </li>
+
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="{{ MEDIA_URL }}{{ student.Profile_piture.url }}" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{ student.name }}</span>
+
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="{{ MEDIA_URL }}{{ student.Profile_piture.url }}" class="img-circle" alt="User Image">
+
+                <p class="text-black">
+                  {{ student.name }} - {{ student.Qualification }}
+                  <small>{{ student.Collage }}</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="/student_edit_profile" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar" style="position: fixed">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar" >
+      <!-- Sidebar user panel -->
+      <div class="user-panel" >
+        <div class="pull-left image">
+          <img src="{{ MEDIA_URL }}{{ student.Profile_piture.url }}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+            <p><a href="/student_index"><h4><b  style="text-align: justify">{{ student.name }}</b></h4></a></p>
+        </div>
+      </div>
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+		<li>
+          <a href="/student_edit_profile">
+            <i class="fa fa-th"></i> <span>Edit Profile</span>
+          </a>
+        </li>
+		<li>
+          <a href="/student_following">
+            <i class="fa fa-th"></i> <span>Following</span>
+          </a>
+        </li>
+          <li>
+          <a href="/student_history">
+            <i class="fa fa-th"></i> <span>History</span>
+          </a>
+        </li>
+		<li>
+          <a href="/student_review_show">
+            <i class="fa fa-th"></i> <span>Reviews</span>
+          </a>
+        </li>
+          <li>
+          <a href="/notification_student">
+            <i class="fa fa-th"></i> <span>Notification</span>
+          </a>
+        </li>
+		<li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+{% block content_student %}
+{% endblock %}
+</div>
+{% endblock %}

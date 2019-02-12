@@ -1,0 +1,15 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="index">
+    {% csrf_token %}
+    <input type='hidden' name='csrfmiddlewaretoken' value='randomchars' />
+
+    <input type="text" name="fn">
+    <input type="submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content %}
+    <script>
+     function change_online_status(t,expert_id) {
+         alert("in")
+         if(t.checked)
+        {
+             $.ajax({data:{'status':1,'expert_id':expert_id},url: "/expert_online_status", success: function(result){
+                $('#online_status').show();
+                $('#offline_status').hide()
+            }
+        });
+
+        }
+        else{
+            $.ajax({data:{'status':0,'expert_id':expert_id},url: "/expert_online_status", success: function(result){
+                $('#online_status').hide();
+            $('#offline_status').show()
+
+            }
+        });
+
+        }
+
+    }
+    </script>
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="/visitor" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini">Core Hike</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg" style="position: fixed"><b>CoreHike</b></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-fixed-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+
+          <!-- Notifications: style can be found in dropdown.less -->
+          <li class="dropdown notifications-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">{{ news_count }}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have {{ news_count }} notifications</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                    {% for n in news %}
+                         <li>
+                    <a href="#">
+                      <i class="fa fa-users text-aqua"></i> {{ n.news }}
+                    </a>
+                  </li>
+                    {% endfor %}
+
+
+                </ul>
+              </li>
+              <li class="footer"><a href="/notification_expert">View all</a><a href="/clear_notification_expert_all">Clear all</a></li>
+            </ul>
+          </li>
+        <li><a href="/expert_index#expert">Expert</a></li>
+        <li><a href="/expert_index"><i class="fa fa-home"></i></a></li>
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="{{ MEDIA_URL }}{{ expert.Profile_piture.url }}" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{ expert.name }}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+
+              <!-- Menu Body -->
+                    <li>
+                    <label class="control-sidebar-subheading" style="margin-left: 5px">
+                      Show me as online
+                        {% if online %}
+                            <input  type="checkbox" checked onchange="change_online_status(this,{{ expert.id }})">
+                        {% else %}
+                            <input  type="checkbox"  onchange="change_online_status(this,{{ expert.id }})" >
+                        {% endif %}
+                    </label>
+                </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="/edit_expert" class="btn btn-warning btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="/logout" class="btn btn-warning btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar" style="position:fixed">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="{{ MEDIA_URL }}{{ expert.Profile_piture.url }}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+            <p><a style="color: black" href="/expert_index">{{ expert.name }}</a></p>
+            {% if online %}
+            <div id="online_status" style="display: block"> <i  class="fa fa-circle text-success"></i> Online</div>
+            {% endif %}
+            <div id="online_status" style="display: none"> <i  class="fa fa-circle text-success"></i> Online</div>
+
+            <div id="offline_status" style="display: none"> <i  class="fa fa-circle text-gray"></i> Offline</div>
+
+        </div>
+      </div>
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+		<li>
+          <a href="/edit_expert">
+            <i class="fa fa-th"></i> <span>Edit Profile</span>
+          </a>
+        </li>
+		<li>
+          <a href="/add_lecture">
+            <i class="fa fa-th"></i> <span>COREHIKE Activity</span>
+          </a>
+        </li><li>
+          <a href="/followers">
+            <i class="fa fa-th"></i> <span>Followers</span>
+          </a>
+        </li><li>
+          <a href="/expert_history">
+            <i class="fa fa-th"></i> <span>History</span>
+          </a>
+        </li>
+		<li>
+          <a href="/review_expert">
+            <i class="fa fa-th"></i> <span>Reviews</span>
+          </a>
+        </li>
+          <li>
+          <a href="/notification_expert">
+            <i class="fa fa-th"></i> <span>Notification</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+ {% block content_expert %}{% endblock %}
+  <!-- Content Wrapper. Contains page content -->
+
+</div>
+{% endblock %}

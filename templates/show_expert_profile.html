@@ -1,0 +1,136 @@
+{% extends 'expert_base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content_expert %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+<br>
+<br>
+
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-6">
+                           <div class="box box-warning">
+                                <div class="box-header with-border">
+
+                                  <h5 class="box-title">Profile</h5>
+                                </div>
+                               <div class="row">
+                                       <div class="col-md-6">
+                                          <!-- Profile Image -->
+                                          <div class="box box-primary">
+                                            <div class="box-body box-profile">
+                                              <img class="profile-user-img img-responsive img-circle" src="/media/profile_images/avatar2_wYXPa6i.png" alt="User profile picture">
+
+                                                <h3 class="profile-username text-center">{{ show_expert.name }}
+                                                  {% if show_expert_online %}
+                                                     <i  class="fa fa-circle text-success"></i>
+                                                  {% else %}
+                                                      <i  class="fa fa-circle text-gray"></i>
+                                                  {% endif %}
+                                                </h3>
+
+                                              <p class="text-muted text-center">{{ show_expert.Designation }}</p>
+
+                                              <ul class="list-group list-group-unbordered">
+                                                <li class="list-group-item">
+                                                  <b>Followers</b> <a class="pull-right">{{ expert_follower_count }}</a>
+                                                </li>
+                                                  <li class="list-group-item">
+                                                      <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                                                       <p>
+                                                            {%  for each_skill in skills %}
+                                                              <span class="label label-info">{{ each_skill }}</span>
+                                                          {% endfor %}
+                                                          </p>
+                                                  </li>
+
+
+                                              </ul>
+
+
+                                            </div>
+                                            <!-- /.box-body -->
+                                          </div>
+                                          <!-- /.box -->
+
+                                          <!-- About Me Box -->
+                                          <!-- /.box -->
+                                        </div>
+                                   <div class="col-md-6">
+                                                                   <div class="box box-primary">
+                                        <div class="box-header with-border">
+                                          <h3 class="box-title">About Me</h3>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body">
+                                             <strong><i class="fa fa-edit"></i> About</strong>
+
+                                          <p class="text-muted">{{ show_expert.about }}</p>
+
+                                          <hr>
+                                          <strong><i class="fa fa-building"></i> Company</strong>
+
+                                          <p class="text-muted">
+                                           {{ show_expert.Company_Name }}
+                                          </p>
+
+                                          <hr>
+
+                                        </div>
+                                        <!-- /.box-body -->
+                                      </div>
+                                   </div>
+                           </div>
+                    </div>
+
+                    </div>
+            <div class="col-md-6">
+                           <div class="box box-warning">
+                                <div class="box-header with-border">
+
+                                  <h5 class="box-title">Recent Activity</h5>
+                                </div>
+                              {% for each_lecture in add_lect %}
+                                    <div class="box box-warning box-solid">
+                                <div class="box-header with-border">
+                                  <h3 class="box-title">{{ each_lecture.title }}</h3>
+
+                                  <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                  </div>
+                                  <!-- /.box-tools -->
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body" style="">
+                                  <div class="form-group">
+                                      <label for="description">Description</label>
+                                      <textarea class="form-control" id="description" readonly style="border:0">{{ each_lecture.description }}</textarea>
+                                      </div>
+                                    <div class="form-group">
+                                      <label for="time">Time</label>
+                                      <input type="text" id="time" value="{{ each_lecture.time }}" style="border:0" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="date">Date</label>
+                                      <input type="text" id="date" style="border:0" value="{{ each_lecture.date }}" readonly>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                              </div>
+                              {% endfor %}
+                    </div>
+
+                    </div>
+
+        </div>
+    </section>
+
+</div>
+{% endblock %}

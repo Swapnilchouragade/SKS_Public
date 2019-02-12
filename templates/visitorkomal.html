@@ -1,0 +1,616 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block content %}
+
+
+        <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="{%static 'Admin/login/css/bootstrap.min.css'%}">
+		<link rel="stylesheet" href="{%static 'Admin/login/css/font-awesome.min.css'%}">
+		<link rel="stylesheet" href="{%static 'Admin/login/css/templatemo-style.css'%}">
+		<script src="{%static 'Admin/login/js/jquery.js'%}"></script>
+		<script src="{%static 'Admin/login/js/bootstrap.min.js'%}"></script>
+        <script src="{%static 'Admin/login/js/jquery.singlePageNav.min.js'%}"></script>
+		<script src="{%static 'Admin/login/js/typed.js'%}"></script>
+		<!-- <script src="js/wow.min.js"></script> -->
+		<script src="{%static 'Admin/login/js/custom.js'%}"></script>
+        <style>
+                        .dropbtn {
+
+                          padding: 16px;
+                          font-size: 16px;
+                          border: none;
+                          cursor: pointer;
+                        }
+
+                        .dropdown {
+                          position: relative;
+                          display: inline-block;
+                        }
+
+                        .dropdown-content {
+                          display: none;
+                          position: absolute;
+                          background-color: #f9f9f9;
+                          min-width: 160px;
+                          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                          z-index: 1;
+                        }
+
+                        .dropdown-content a {
+                          color: black;
+                          padding: 12px 16px;
+                          text-decoration: none;
+                          display: block;
+                        }
+
+                        .dropdown-content a:hover {background-color: #f1f1f1}
+
+                        .dropdown:hover .dropdown-content {
+                          display: block;
+                        }
+
+                        .dropdown:hover .dropbtn {
+                          background-color: #3e8e41;
+                        }
+
+                        </style>
+    <div class="wrapper" style="margin-left:5px">
+
+
+   <!-- start header -->
+        <header class="navbar-fixed-top" style="background-color: black">
+            <div class="container" style="background-color: black">
+                <div class="row" >
+                    <div class="col-md-3 col-sm-4 col-xs-12">
+                        <p><i class="fa fa-phone fa-lg"></i><span> Phone</span>9620950615</p>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-12">
+                        <p><i class="fa fa-envelope-o fa-lg"></i><span> Email</span><a href="#">info@corhike.com</a></p>
+                    </div>
+                    <div class="col-md-5 col-sm-4 col-xs-12">
+                        <ul class="social-icon">
+                            <li><span>Meet us on</span></li>
+                            <li><a href="#" class="fa fa-facebook fa-lg"></a></li>
+{#                            <li><a href="#" class="fa fa-twitter"></a></li>#}
+{#                            <li><a href="#" class="fa fa-instagram"></a></li>#}
+							<li><a href="/login">LOGIN</a></li>
+                            <li><a href="/check_login" class="fa fa-user-circle fa-lg"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-default  templatemo-nav" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon icon-bar"></span>
+						<span class="icon icon-bar"></span>
+						<span class="icon icon-bar"></span>
+					</button>
+					<a href="/visitor" class="navbar-brand">CORHIKE</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#top">HOME</a></li>
+                        <li><a href="#about">ABOUT</a></li>
+						<li><a href="#service">NEWS</a></li>
+						<li><a href="#expert">EXPERT</a></li>
+						<li><a href="#service">SERVICE</a></li>
+{#						<li><a href="#videos">VIDEO</a></li>#}
+						<li><a href="#contact">CONTACT</a></li>
+                        <li></li>
+
+                        <div class="dropdown" style="padding-top:15px;">
+                          <li><a  class="dropbtn" style="text-decoration: none;">REGISTER</a></li>
+                          <div class="dropdown-content">
+                          <a href="/student_registration">Student </a>
+                          <a href="/register_expert">Expert</a>
+                          </div>
+                        </div>
+					</ul>
+				</div>
+			</div>
+		</nav>
+        </header>
+        <!-- end header -->
+
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper " style="margin-left:5px; ">
+
+
+        <!-- start home -->
+    	<section id="home"  style="padding-top: 200px;background-image: url({% static 'Admin/home-bg.jpg'%});">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-md-offset-2 col-md-8"><br><br><br>
+    					<h1 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">WE MAKE RELATION THAT ARE <span>CORHIKE</span></h1>
+
+    					<a data-scroll href="/login" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">GET STARTED</a>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+    	<!-- end home -->
+
+        <!-- start about -->
+  <div class="" style="background-image: url({% static 'Admin/back.png'%});">
+		<section id="about" style="padding-top: 110px; padding-right : 50px; padding-left : 50px;">
+				<div class="row">
+					<div class="col-md-12">
+    					<h2 class="wow bounceIn" data-wow-offset="50" style="padding-bottom:0px" data-wow-delay="0.3s">WE ARE <span>CORHIKE</span></h2>
+                        <h4 style="padding-top:20px;padding-bottom:50px;align-content: center ;text-align: justify;">We are the Pune base start up working on knowledge transfer & building relation between Universities & Corporate.
+                            During the MBA Studies I Found the need of professional relation with the corporate world which not only increase my professional relation but also give brief about practical concept, challenges faced by employee, competencies need for job which may completely differ from educational learning similarly corporate interaction gives information about organization work culture, management, work responsibilities, general policies etc. which help student to take right decision in their carrier.
+                            Similarly, this platform help corporate to find best of best talent from universities & build strong relation between the student & employee.
+                             </h4>
+    				</div>
+					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft"  data-wow-offset="50" data-wow-delay="0.6s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<i class="fa fa-telegram fa-lg"></i>
+								</div>
+								<h3 class="media-heading">Our Vision and Mission</h3>
+							</div>
+							<div class="media-body">
+								<p>To bring professional relation in community.<br><br> To bring practical learning into student education similarly brings universities research, knowledge & learnings to corporate.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-offset="50" data-wow-delay="0.9s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<i class="fa fa-user-secret fa-lg"></i>
+								</div>
+								<h3 class="media-heading">CORHIKE FOR EXPERT</h3>
+							</div>
+							<div class="media-body">
+								<p>Make your name well known in community with Corehike.
+                                We create your brand.<br>
+                                Universities Knowledge, Research, Learnings.<br>
+                                Helps Management to find best talent.<br>
+                                Employee get special attention from student.<br>
+                                Add suitable employee in your working team.<br>
+                                Student interaction act as stress relief activity.<br>
+                                Gets likes, Reviews, which help employee for corporate journey.
+                                </p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<i class="fa fa-graduation-cap fa-lg"></i>
+								</div>
+								<h3 class="media-heading">CORHIKE FOR STUDENT</h3>
+							</div>
+							<div class="media-body">
+                                <p> Built professional relation during studies.<br>
+                                Get Practical knowledge from organization. <br>
+                                Learn same topic from different expert. (E.g. “Brand Management” you can learn it from Different manager of many organization.)<br>
+                                Increase your communication skill.<br>
+                                Reduce the fear of Interview.<br>
+                                Get clarity in your corporate journey with clarity in work profile.
+
+                                </p>
+							</div>
+						</div>
+					</div>
+				</div>
+		</section>
+  </div>
+		<!-- end about -->
+  <div>
+      <section id="expert" style="padding-top: 121px">
+		<span class="content-header">
+            <h2 class="wow bounceIn" data-wow-offset="50" style="padding-bottom:0px;" data-wow-delay="0.3s"> <span style="color:darkcyan;"> OUR EXPERTS</span></h2>
+		</span>
+
+        <div class="me">
+  <ul class="nav nav-pills" style="text-align:center; padding-left: 50px;">
+    <li class="active" ><a data-toggle="pill" href="#menu0" ><b>Management</b></a></li>
+    <li><a data-toggle="pill" href="#menu1"><b>Engineering</b></a></li>
+    <li><a data-toggle="pill" href="#menu2"><b>Pharmacy</b></a></li>
+{#    <li><a data-toggle="pill" href="#menu3">Other</a></li>#}
+  </ul>
+        </div>
+  <br>
+  <div class="tab-content " style="padding-left: 50px;">
+    <div id="menu0" class="tab-pane fade in active">
+        <div class="row" id="management" style="display:block">
+            {% for each_expert in expert_m %}
+                 <div class="col-md-5 col-md-auto">
+                          <!-- Widget: user widget style 1 -->
+                          <div class="box box-widget widget-user">
+
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username">{{ each_expert.name }}</h3>
+              <h5 class="widget-user-desc">{{ each_expert.Designation }}</h5>
+            </div>
+            <div class="widget-user-image">
+              <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">
+            </div>
+            <div class="box-footer" style="background-color: #5a5a5a;">
+              <div class="row">
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">3</h5>
+                    <span class="description-text">Video Delivered</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">2</h5>
+                    <span class="description-text">FOLLOWERS</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4">
+                  <div class="description-block">
+                    <h5 class="description-header"><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></h5>
+                    <span class="description-text">Rating</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+              </div>
+
+                <div  data-toggle="collapse" data-target=".collapse" style="text-align: left;float: left">View more</div>
+                <div class="collapse">
+                    <br>
+                    Company Name:- <span class="description-text">SKS</span><br>
+                    Year Of Experience :-<span class="description-text">10 year</span><br>
+                    <hr style="border: 1px solid white;" />
+                     <span class="description-text">Activity</span><br>
+
+            </div>
+
+          </div>
+          <!-- /.widget-user -->
+        </div>
+                 </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+       <div class="row" id="engineering">
+
+       {% for each_expert in expert_e %}
+                 <div class="col-md-5 col-md-auto">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user">
+
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username">{{ each_expert.name }}</h3>
+              <h5 class="widget-user-desc">{{ each_expert.Designation }}</h5>
+            </div>
+            <div class="widget-user-image">
+              <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">
+            </div>
+            <div class="box-footer" style="background-color: #5a5a5a;">
+              <div class="row">
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">3</h5>
+                    <span class="description-text">Video Delivered</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">2</h5>
+                    <span class="description-text">FOLLOWERS</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4">
+                  <div class="description-block">
+                    <h5 class="description-header"><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></h5>
+                    <span class="description-text">Rating</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+              </div>
+                 <div  data-toggle="collapse" data-target=".collapse" style="text-align: left;float: left">View more</div>
+                <div class="collapse">
+                    <br>
+                    Company Name:- <span class="description-text">SKS</span><br>
+                    Year Of Experience :-<span class="description-text">10 year</span><br>
+                    <hr style="border: 1px solid white;" />
+                     <span class="description-text">Activity</span><br>
+                </div>
+              <!-- /.row -->
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+       {% endfor %}
+      </div>
+
+    </div>
+    <div id="menu2" class="tab-pane fade">
+       <div class="row" id="engineering">
+            {% for each_expert in expert_p %}
+
+                 <div class="col-md-5 col-md-auto">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user">
+
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username">{{ each_expert.name }}</h3>
+              <h5 class="widget-user-desc">{{ each_expert.Designation }}</h5>
+            </div>
+            <div class="widget-user-image">
+              <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">
+            </div>
+            <div class="box-footer" style="background-color: #5a5a5a;">
+              <div class="row">
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">3</h5>
+                    <span class="description-text">Video Delivered</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">1</h5>
+                    <span class="description-text">FOLLOWERS</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4">
+                  <div class="description-block">
+                    <h5 class="description-header"><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></h5>
+                    <span class="description-text">Rating</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+              </div>
+                 <div  data-toggle="collapse" data-target=".collapse" style="text-align: left;float: left">View more</div>
+                <div class="collapse">
+                    <br>
+                    Company Name:- <span class="description-text">SKS</span><br>
+                    Year Of Experience :-<span class="description-text">10 year</span><br>
+                    <hr style="border: 1px solid white;" />
+                     <span class="description-text">Activity</span><br>
+                </div>
+              <!-- /.row -->
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+
+            {% endfor %}
+      </div>
+
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>None</h3>
+    </div>
+  </div>
+
+	  </section>
+</div>
+	    <br>
+
+        <!-- /video section-->
+	 <!--   {# {% comment %} <section id="videos">
+	  <span class="content-header">
+		  <h1>
+			Guest's video
+		  </h1>
+		</span>
+		<div class="row">
+		<div class="col-md-4">
+		<div class="timeline-item">
+
+                <h3 class="timeline-header"><a href="#">Guest's</a> shared video</h3>
+
+                <div class="timeline-body">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" allowfullscreen="" frameborder="0"></iframe>
+                  </div>
+                </div>
+                <div class="timeline-footer">
+                  <a href="#" class="btn btn-xs bg-maroon">Title</a>
+                </div>
+              </div>
+		</div>
+		<div class="col-md-4">
+		<div class="timeline-item">
+
+                <h3 class="timeline-header"><a href="#">Guest's</a> shared video</h3>
+
+                <div class="timeline-body">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" allowfullscreen="" frameborder="0"></iframe>
+                  </div>
+                </div>
+                <div class="timeline-footer">
+                  <a href="#" class="btn btn-xs bg-maroon">Title</a>
+                </div>
+              </div>
+		</div>
+		<div class="col-md-4">
+		<div class="timeline-item">
+
+                <h3 class="timeline-header"><a href="#">Guest's</a> shared video</h3>
+
+                <div class="timeline-body">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" allowfullscreen="" frameborder="0"></iframe>
+                  </div>
+                </div>
+                <div class="timeline-footer">
+                  <a href="#" class="btn btn-xs bg-maroon">Title</a>
+                </div>
+              </div>
+		</div>
+		</div>
+
+		</section>{% endcomment %}
+		<br>#}  -->
+        <!-- Left col -->
+<div class="" style="background-color: #7f96a5;">
+		<section id="service" style="padding-top: 121px;padding-left: 50px;padding-right: 50px">
+				<div class="row">
+                    <div class="col-md-12">
+    					<h2 class="wow bounceIn" data-wow-offset="50" style="padding-bottom:0px" data-wow-delay="0.3s">NEWS AND <span>SERVICES</span></h2>
+    				</div>
+					<div class="col-md-12">
+        <section class="col-lg-6 " style="padding-top: 121px;" id="news">
+          <!-- Custom tabs (Charts with tabs)-->
+          <div class="nav-tabs-custom" style="height: 200px;">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs pull-right">
+              <li class="pull-left header"><i class=""></i> NEWS FEED</li>
+            </ul>
+            <div class="tab-content">
+               <marquee id="scroll_news" direction="up" scrolldelay="150" behavior="scroll"   style="color: black">
+                   <div onMouseOver="document.getElementById('scroll_news').stop();" onMouseOut="document.getElementById('scroll_news').start();">
+                     {% for n in news %}
+                        <p class="btn btn-block btn-social btn-bitbucket">
+                        {{ n.news }}
+                        </p>
+                    {% endfor %}
+
+                   </div>
+                                            </marquee>
+
+            </div>
+              
+          </div>
+          <!-- /.nav-tabs-custom -->
+          <!-- quick email widget -->
+		  </section>
+
+        <section class="col-lg-6 " style="padding-top: 121px" id="service">
+          <!-- Custom tabs (Charts with tabs)-->
+
+          <div class="nav-tabs-custom" style="height: 200px;">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs pull-right">
+              <li class="pull-left header"><i class=""></i>Services</li>
+            </ul>
+            <div class="tab-content" style="height: 230px;">
+               <marquee id="scroll_service" direction="up" scrolldelay="150" behavior="scroll"   style="color: black">
+                   <div onMouseOver="document.getElementById('scroll_service').stop();" onMouseOut="document.getElementById('scroll_service').start();">
+
+                       <p class="btn btn-block btn-social btn-bitbucket">A scrolling text created with HTML Marquee element and styled with CSS properties.</p>
+                       <p class="btn btn-block btn-social btn-bitbucket">A scrolling text created with HTML Marquee element and styled with CSS properties.</p>
+                       <p class="btn btn-block btn-social btn-bitbucket">A scrolling text created with HTML Marquee element and styled with CSS properties.</p>
+                   </div>
+                                            </marquee>
+
+            </div>
+
+          </div>
+          <!-- /.nav-tabs-custom -->
+          <!-- quick email widget -->
+		  </section>
+                    </div>
+                </div>
+        </section>
+</div>
+
+      <!--contact section-->
+      <!-- start contact -->
+  <div class="">
+    	<section style="padding-top: 121px; padding-left:50px; padding-right:50px;"  id="contact">
+    			<div class="row">
+    				<div class="col-md-12">
+    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONTACT <span>CORHIKE</span></h2>
+    				</div>
+    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
+    					<form role="form" action="/email/" method="post">
+                                {% csrf_token %}
+    						<label>NAME</label>
+    						<input name="fullname" type="text" class="form-control" id="fullname">
+
+                            <label>EMAIL</label>
+    						<input name="email" type="email" class="form-control" id="email">
+
+                            <label>MESSAGE</label>
+    						<textarea name="message" rows="4" class="form-control" id="message" style="resize: none"></textarea>
+
+                            <input type="submit" class="form-control">
+    					</form>
+
+    				</div>
+    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+    					<address>
+    						<p class="address-title">OUR ADDRESS</p>
+    						<span>To bring professional relation in community. </span>
+    						<p><i class="fa fa-phone fa-lg"></i> 9620950615</p>
+    						<p><i class="fa fa-envelope-o fa-lg"></i>info@corhike.com</p>
+    						<p><i class="fa fa-map-marker fa-lg"></i> Plot No. 78, Behind Vithhal Mandir,Karve Nagar pune 411052</p>
+    					</address>
+    					<ul class="social-icon">
+    						<li><h4>WE ARE SOCIAL</h4></li>
+    						<li><a href="#" class="fa fa-facebook fa-lg"></a></li>
+    						<li><a href="#" class="fa fa-twitter fa-lg"></a></li>
+    						<li><a href="#" class="fa fa-instagram fa-lg"></a></li>
+    					</ul>
+    				</div>
+    			</div>
+    	</section>
+  </div>
+    	<!-- end contact -->
+		 {% comment %} <section class="col-lg-7 connectedSortable" id="contact">
+          <div class="box box-info">
+            <div class="box-header">
+              <i class="fa fa-envelope"></i>
+
+              <h3 class="box-title">Contact US</h3>
+              <!-- tools box -->
+              <!-- /. tools -->
+            </div>
+            <div class="box-body">
+              <form action="#" method="post">
+                <div class="form-group">
+                  <input type="email" class="form-control" name="emailto" placeholder="Email to:">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject">
+                </div>
+
+                  <textarea class="textarea" placeholder="Message"
+                            style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="box-footer clearfix">
+              <button type="button" class="pull-right btn btn-default" id="sendEmail">Send
+                <i class="fa fa-arrow-circle-right"></i></button>
+            </div>
+          </div>
+
+        </section>{% endcomment %}
+        <!-- /.Left col -->
+
+      <!-- /.row (main row) -->
+    <!-- /.content -->
+  </div>
+  </div>
+</div>
+
+
+{% endblock %}

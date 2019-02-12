@@ -1,0 +1,573 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block content %}
+
+
+        <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="{%static 'Admin/login/css/bootstrap.min.css'%}">
+		<link rel="stylesheet" href="{%static 'Admin/login/css/font-awesome.min.css'%}">
+		<link rel="stylesheet" href="{%static 'Admin/login/css/templatemo-style.css'%}">
+		<script src="{%static 'Admin/login/js/jquery.js'%}"></script>
+		<script src="{%static 'Admin/login/js/bootstrap.min.js'%}"></script>
+        <script src="{%static 'Admin/login/js/jquery.singlePageNav.min.js'%}"></script>
+		<script src="{%static 'Admin/login/js/typed.js'%}"></script>
+		<!-- <script src="js/wow.min.js"></script> -->
+		<script src="{%static 'Admin/login/js/custom.js'%}"></script>
+        <style>
+                        .dropbtn {
+
+                          padding: 16px;
+                          font-size: 16px;
+                          border: none;
+                          cursor: pointer;
+                        }
+
+                        .dropdown {
+                          position: relative;
+                          display: inline-block;
+                        }
+
+                        .dropdown-content {
+                          display: none;
+                          position: absolute;
+                          background-color: #f9f9f9;
+                          min-width: 160px;
+                          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                          z-index: 1;
+                        }
+
+                        .dropdown-content a {
+                          color: black;
+                          padding: 12px 16px;
+                          text-decoration: none;
+                          display: block;
+                        }
+
+                        .dropdown-content a:hover {background-color: #f1f1f1}
+
+                        .dropdown:hover .dropdown-content {
+                          display: block;
+                        }
+
+                        .dropdown:hover .dropbtn {
+                          background-color: #3e8e41;
+                        }
+                        </style>
+    <div class="wrapper" style="margin-left:5px">
+
+
+   <!-- start header -->
+        <header class="navbar-fixed-top" style="background-color: black">
+            <div class="container" style="background-color: black">
+                <div class="row" >
+                    <div class="col-md-3 col-sm-4 col-xs-12">
+                        <p><i class="fa fa-phone"></i><span> Phone</span>9620950615</p>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-12">
+                        <p><i class="fa fa-envelope-o"></i><span> Email</span><a href="#">Bridge@company.com</a></p>
+                    </div>
+                    <div class="col-md-5 col-sm-4 col-xs-12">
+                        <ul class="social-icon">
+                            <li><span>Meet us on</span></li>
+                            <li><a href="#" class="fa fa-facebook"></a></li>
+{#                            <li><a href="#" class="fa fa-twitter"></a></li>#}
+{#                            <li><a href="#" class="fa fa-instagram"></a></li>#}
+							<li><a href="/login">LOGIN</a></li>
+                            <li><a href="/check_login" class="fa fa-user-circle"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-default  templatemo-nav" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon icon-bar"></span>
+						<span class="icon icon-bar"></span>
+						<span class="icon icon-bar"></span>
+					</button>
+					<a href="/visitor" class="navbar-brand">BRIDGE</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#top">HOME</a></li>
+                        <li><a href="#about">ABOUT</a></li>
+						<li><a href="#news">NEWS</a></li>
+						<li><a href="#expert">EXPERT</a></li>
+						<li><a href="#service">SERVICE</a></li>
+{#						<li><a href="#videos">VIDEO</a></li>#}
+						<li><a href="#contact">CONTACT</a></li>
+                        <li></li>
+
+                        <div class="dropdown" style="padding-top:15px;">
+                          <li><a  class="dropbtn" style="text-decoration: none;">REGISTER</a></li>
+                          <div class="dropdown-content">
+                          <a href="/student_registration">Student </a>
+                          <a href="/register_expert">Expert</a>
+                          </div>
+                        </div>
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+        </header>
+        <!-- end header -->
+
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper " style="margin-left:5px; background-image: url({% static 'Admin/wood-pattern.png'%});">
+
+  <div >
+        <!-- start home -->
+    	<section id="home"  style="padding-top: 121px;background-image: url({% static 'Admin/home-bg.jpg'%});">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-md-offset-2 col-md-8">
+    					<h1 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">We make Relation that are <span>Bridge</span></h1>
+    					<div class="element1">
+                            <div class="sub-element1">Hello, this is Typed.js</div>
+                            <div class="sub-element1">Awesome Template is provided by templatemo.com website for everyone</div>
+                            <div class="sub-element1">Download, edit and apply this awesome template for your websites</div>
+                        </div>
+    					<a data-scroll href="/login" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">GET STARTED</a>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+    	<!-- end home -->
+
+        <!-- start about -->
+		<section id="about" style="padding-top: 121px">
+				<div class="row">
+					<div class="col-md-12">
+    					<h2 class="wow bounceIn" data-wow-offset="50" style="padding-bottom:0px" data-wow-delay="0.3s">WE ARE <span>AWESOME</span></h2>
+                        <h4 style="padding-top:0px;padding-bottom:62px;align-content: center;text-align: center;">To bring professional relation in community. </h4>
+    				</div>
+					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft"  data-wow-offset="50" data-wow-delay="0.6s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<i class="fa fa-mobile"></i>
+								</div>
+								<h3 class="media-heading">Our Mission</h3>
+							</div>
+							<div class="media-body">
+								<p>To bring practical learning into  <a rel="nofollow" href="http://www.corehike.com" target="_parent">Core Hike</a> student education similarly brings universities research, knowledge & learnings to corporate.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-offset="50" data-wow-delay="0.9s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<i class="fa fa-comment-o"></i>
+								</div>
+								<h3 class="media-heading">FREE SUPPORT</h3>
+							</div>
+							<div class="media-body">
+								<p>During the Studies <a rel="nofollow" href="http://corehike.com">core hike</a> <a rel="nofollow" href="http://corehike.com"></a> the need of professional relation with the corporate world which not only increase my professional relation but also give brief about practical concept</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<i class="fa fa-hand-peace-o"></i>
+								</div>
+								<h3 class="media-heading">Suport</h3>
+							</div>
+							<div class="media-body">challenges faced by employee,competencies need for job which may completely differ from gives information about organization work culture,management,work,general etc which help student to take right decision in their carrier</p>
+							</div>
+						</div>
+					</div>
+				</div>
+		</section>
+		<!-- end about -->
+
+	    <section id="expert" style="padding-top: 121px">
+		<span class="content-header">
+            <h2 class="wow bounceIn" data-wow-offset="50" style="padding-bottom:0px" data-wow-delay="0.3s"> <span>Our Expert</span></h2>
+		</span>
+		<div class="container">
+
+        <div class="me">
+  <ul class="nav nav-pills" style="text-align:center;">
+    <li class="active "><a data-toggle="pill" href="#menu0">Management</a></li>
+    <li><a data-toggle="pill" href="#menu1">Engineering</a></li>
+    <li><a data-toggle="pill" href="#menu2">Pharmacy</a></li>
+    <li><a data-toggle="pill" href="#menu3">Other</a></li>
+  </ul>
+        </div>
+  <br>
+  <div class="tab-content">
+    <div id="menu0" class="tab-pane fade in active">
+        <div class="row" id="management" style="display:block">
+            {% for each_expert in expert_m %}
+                 <div class="col-md-4">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user">
+
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username">{{ each_expert.name }}</h3>
+              <h5 class="widget-user-desc">{{ each_expert.Designation }}</h5>
+            </div>
+            <div class="widget-user-image">
+              <img class="img-circle" src="{% static 'Admin/dist/img/user2-160x160.jpg' %}" alt="User Avatar">
+            </div>
+            <div class="box-footer" style="background-color: #5a5a5a;">
+              <div class="row">
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">3,200</h5>
+                    <span class="description-text">Video Delivered</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">13,000</h5>
+                    <span class="description-text">FOLLOWERS</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4">
+                  <div class="description-block">
+                    <h5 class="description-header"><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></h5>
+                    <span class="description-text">Rating</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+              </div>
+
+                 <a href="#demo" data-toggle="collapse" data-target=".collapse" style="text-align: right;">view more</a>
+              <!-- /.row -->
+                <hr style="border: 1px solid white;" />
+<div  id="demo" class="collapse">
+    <span class="description-text">Information</span><br>
+    Company Name:- <span class="description-text">SKS</span><br>
+    Field Of Experience :-<span class="description-text">10 year</span><br>
+    Year Of Experience :-<span class="description-text">10 year</span><br>
+    <hr style="border: 1px solid white;" />
+     <span class="description-text">Activity</span><br>
+</div>
+            </div>
+
+          </div>
+          <!-- /.widget-user -->
+        </div>
+
+            {% endfor %}
+      </div>
+
+
+    </div>
+    <div id="menu1" class="tab-pane fade">
+       <div class="row" id="engineering">
+
+       {% for each_expert in expert_e %}
+                 <div class="col-md-4">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user">
+
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username">{{ each_expert.name }}</h3>
+              <h5 class="widget-user-desc">{{ each_expert.Designation }}</h5>
+            </div>
+            <div class="widget-user-image">
+              <img class="img-circle" src="{% static 'Admin/dist/img/user2-160x160.jpg' %}" alt="User Avatar">
+            </div>
+            <div class="box-footer">
+              <div class="row">
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">3,200</h5>
+                    <span class="description-text">Video Delivered</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">13,000</h5>
+                    <span class="description-text">FOLLOWERS</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4">
+                  <div class="description-block">
+                    <h5 class="description-header"><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></h5>
+                    <span class="description-text">Rating</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+
+            {% endfor %}
+      </div>
+
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      {% for each_expert in expert_p %}
+                 <div class="col-md-4">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user">
+
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username">{{ each_expert.name }}</h3>
+              <h5 class="widget-user-desc">{{ each_expert.Designation }}</h5>
+            </div>
+            <div class="widget-user-image">
+              <img class="img-circle" src="{% static 'Admin/dist/img/user2-160x160.jpg' %}" alt="User Avatar">
+            </div>
+            <div class="box-footer">
+              <div class="row">
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">3,200</h5>
+                    <span class="description-text">Video Delivered</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">13,000</h5>
+                    <span class="description-text">FOLLOWERS</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4">
+                  <div class="description-block">
+                    <h5 class="description-header"><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></h5>
+                    <span class="description-text">Rating</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+
+            {% endfor %}
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>Menu 3</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  </div>
+</div>
+
+	  </section>
+	    <br>
+
+        <!-- /video section-->
+	    {% comment %} <section id="videos">
+	  <span class="content-header">
+		  <h1>
+			Guest's video
+		  </h1>
+		</span>
+		<div class="row">
+		<div class="col-md-4">
+		<div class="timeline-item">
+
+                <h3 class="timeline-header"><a href="#">Guest's</a> shared video</h3>
+
+                <div class="timeline-body">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" allowfullscreen="" frameborder="0"></iframe>
+                  </div>
+                </div>
+                <div class="timeline-footer">
+                  <a href="#" class="btn btn-xs bg-maroon">Title</a>
+                </div>
+              </div>
+		</div>
+		<div class="col-md-4">
+		<div class="timeline-item">
+
+                <h3 class="timeline-header"><a href="#">Guest's</a> shared video</h3>
+
+                <div class="timeline-body">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" allowfullscreen="" frameborder="0"></iframe>
+                  </div>
+                </div>
+                <div class="timeline-footer">
+                  <a href="#" class="btn btn-xs bg-maroon">Title</a>
+                </div>
+              </div>
+		</div>
+		<div class="col-md-4">
+		<div class="timeline-item">
+
+                <h3 class="timeline-header"><a href="#">Guest's</a> shared video</h3>
+
+                <div class="timeline-body">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" allowfullscreen="" frameborder="0"></iframe>
+                  </div>
+                </div>
+                <div class="timeline-footer">
+                  <a href="#" class="btn btn-xs bg-maroon">Title</a>
+                </div>
+              </div>
+		</div>
+		</div>
+
+		</section>{% endcomment %}
+		<br>
+
+        <!-- Left col -->
+        <section class="col-lg-6 " style="padding-top: 121px" id="news">
+          <!-- Custom tabs (Charts with tabs)-->
+          <div class="nav-tabs-custom">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs pull-right">
+              <li class="pull-left header"><i class="fa fa-inbox"></i> NEWS FEED</li>
+            </ul>
+            <div class="tab-content">
+               <marquee id="scroll_news" direction="up" scrolldelay="150" behavior="scroll"   style="color: black">
+                   <div onMouseOver="document.getElementById('scroll_news').stop();" onMouseOut="document.getElementById('scroll_news').start();">
+                    {% for n in news %}
+                        <p>
+                        {{ n.news }}
+                        </p>
+                    {% endfor %}                   </div>
+                                            </marquee>
+
+            </div>
+
+          </div>
+          <!-- /.nav-tabs-custom -->
+          <!-- quick email widget -->
+		  </section>
+
+        <section class="col-lg-6 " style="padding-top: 121px" id="service">
+          <!-- Custom tabs (Charts with tabs)-->
+          <div class="nav-tabs-custom">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs pull-right">
+              <li class="pull-left header"><i class="fa fa-inbox"></i>Services</li>
+            </ul>
+            <div class="tab-content">
+               <marquee id="scroll_service" direction="up" scrolldelay="150" behavior="scroll"   style="color: black">
+                   <div onMouseOver="document.getElementById('scroll_service').stop();" onMouseOut="document.getElementById('scroll_service').start();">
+                    {% for n in news %}
+                        <p>
+                        {{ n.news }}
+                        </p>
+                    {% endfor %}
+                   </div>
+               </marquee>
+
+            </div>
+
+          </div>
+          <!-- /.nav-tabs-custom -->
+          <!-- quick email widget -->
+		  </section>
+
+      <!--contact section-->
+      <!-- start contact -->
+    	<section  id="contact">
+    			<div class="row">
+    				<div class="col-md-12">
+    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONTACT <span>AWESOME</span></h2>
+    				</div>
+    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
+    					<form role="form" action="/email/" method="post" >
+                                {% csrf_token %}
+    						<label>NAME</label>
+    						<input name="fullname" type="text" class="form-control" id="fullname">
+
+                            <label>EMAIL</label>
+    						<input name="email" type="email" class="form-control" id="email">
+
+                            <label>MESSAGE</label>
+    						<textarea name="message" rows="4" class="form-control" id="message"></textarea>
+
+                            <input type="submit" class="form-control">
+    					</form>
+
+    				</div>
+    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+    					<address>
+    						<p class="address-title">OUR ADDRESS</p>
+    						<span>To bring professional relation in community. </span>
+    						<p><i class="fa fa-phone"></i> 9620950615</p>
+    						<p><i class="fa fa-envelope-o"></i> awesome@company.com</p>
+    						<p><i class="fa fa-map-marker"></i> Plot No. 78 VithhalMandirMaage ,Karve Nagar pune 411052</p>
+    					</address>
+    					<ul class="social-icon">
+    						<li><h4>WE ARE SOCIAL</h4></li>
+    						<li><a href="#" class="fa fa-facebook"></a></li>
+    						<li><a href="#" class="fa fa-twitter"></a></li>
+    						<li><a href="#" class="fa fa-instagram"></a></li>
+    					</ul>
+    				</div>
+    			</div>
+    	</section>
+    	<!-- end contact -->
+		 {% comment %} <section class="col-lg-7 connectedSortable" id="contact">
+          <div class="box box-info">
+            <div class="box-header">
+              <i class="fa fa-envelope"></i>
+
+              <h3 class="box-title">Contact US</h3>
+              <!-- tools box -->
+              <!-- /. tools -->
+            </div>
+            <div class="box-body">
+              <form action="#" method="post">
+                <div class="form-group">
+                  <input type="email" class="form-control" name="emailto" placeholder="Email to:">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject">
+                </div>
+                <div>
+                  <textarea class="textarea" placeholder="Message"
+                            style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="box-footer clearfix">
+              <button type="button" class="pull-right btn btn-default" id="sendEmail">Send
+                <i class="fa fa-arrow-circle-right"></i></button>
+            </div>
+          </div>
+
+        </section>{% endcomment %}
+        <!-- /.Left col -->
+
+      <!-- /.row (main row) -->
+    <!-- /.content -->
+  </div>
+  </div>
+</div>
+
+
+{% endblock %}

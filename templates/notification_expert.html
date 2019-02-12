@@ -1,0 +1,45 @@
+{% extends 'expert_base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content_expert %}
+     <script>
+    function remove_notification(notification_id) {
+        $.ajax({data:{'id':notification_id},url: "/clear_notification_expert", success: function(result){
+
+            }
+        });
+    }
+    </script>
+  <div class="content-wrapper">
+
+    <section class="content">
+        <br><br>
+        <div class="row">
+             <div class="row">
+             {% for n in news %}
+             <div class="col-md-6">
+                  <div class="box box-success box-solid">
+                    <div class="box-header with-border">
+                         <h3 class="box-title">Removable</h3>
+                      <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="remove" onclick="remove_notification({{ n.id }})"><i class="fa fa-times"></i></button>
+                      </div>
+                      <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      {{ n.news }}
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+            {% endfor %}
+    </div>
+        </div>
+    </section>
+    <!-- /.content -->
+  </div>
+{% endblock %}

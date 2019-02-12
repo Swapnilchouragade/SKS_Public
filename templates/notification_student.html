@@ -1,0 +1,64 @@
+{% extends 'student_base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load staticfiles %}
+{% block content_student %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    function remove_notification(notification_id) {
+        $.ajax({data:{'id':notification_id},url: "/clear_notification_student", success: function(result){
+
+            }
+        });
+    }
+    function change_status(t) {
+        if(t.checked)
+        {
+            $('#online_status').show()
+            $('#offline_status').hide()
+
+        }
+        else{
+           $('#online_status').hide()
+            $('#offline_status').show()
+        }
+    }
+    </script>
+            <!-- Content Wrapper. Contains page content -->
+                      <div class="content-wrapper" style="background: lightcyan">
+<br>
+<br>
+<section class="content">
+<div class="container">
+<div class="row">
+{% if news %}
+     {% for n in news %}
+     <div class="col-md-5">
+          <div class="box box-success box-solid">
+            <div class="box-header with-border">
+                 <h3 class="box-title">Removable</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="remove" onclick="remove_notification({{ n.id }})"><i class="fa fa-times"></i></button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              {{ n.news }}
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+    {% endfor %}
+{% else %}
+    <h2>No notification update.</h2>
+{% endif %}
+</div>
+</div>
+
+</section>
+<!-- /.content -->
+</div>
+            <!-- /.content -->
+{% endblock %}

@@ -1,0 +1,1267 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block content %}
+
+
+        <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="{%static 'Admin/login/css/bootstrap.min.css'%}">
+		<link rel="stylesheet" href="{%static 'Admin/login/css/font-awesome.min.css'%}">
+		<link rel="stylesheet" href="{%static 'Admin/login/css/templatemo-style.css'%}">
+		<script src="{%static 'Admin/login/js/jquery.js'%}"></script>
+		<script src="{%static 'Admin/login/js/bootstrap.min.js'%}"></script>
+        <script src="{%static 'Admin/login/js/jquery.singlePageNav.min.js'%}"></script>
+		<script src="{%static 'Admin/login/js/typed.js'%}"></script>
+		<!-- <script src="js/wow.min.js"></script> -->
+		<script src="{%static 'Admin/login/js/custom.js'%}"></script>
+        <style>
+                        .dropbtn {
+
+                          padding: 16px;
+                          font-size: 16px;
+                          border: none;
+                          cursor: pointer;
+                        }
+
+                        .dropdown {
+                          position: relative;
+                          display: inline-block;
+                        }
+
+                        .dropdown-content {
+                          display: none;
+                          position: absolute;
+                          background-color: #0f0f0f;
+                          min-width: 160px;
+                          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                          z-index: 1;
+                        }
+
+                        .dropdown-content a {
+                          color: black;
+                          padding: 12px 16px;
+                          text-decoration: none;
+                          display: block;
+                        }
+
+                        .dropdown-content a:hover {background-color: #f1f1f1}
+
+                        .dropdown:hover .dropdown-content {
+                          display: block;
+                        }
+
+                        .dropdown:hover .dropbtn {
+                          background-color: #3e8e41;
+                        }
+        #contact{
+            background-color: #303030;
+        }
+                        </style>
+    <div class="wrapper" >
+
+
+   <!-- start header -->
+        <header class="navbar-fixed-top" style="background-color: #0E2231">
+            <div class="container" style="background-color: #0E2231">
+                <div class="row" >
+{#                    <div class="col-md-3 col-sm-4 col-xs-12">#}
+{#                        <p><i class="fa fa-phone fa-lg"></i><span> Phone</span>9620950615</p>#}
+{#                    </div>#}
+                    <div class="col-md-7 col-sm-4 col-xs-12">
+                        <p><i class="fa fa-envelope-o fa-lg"></i><span> Email</span><a href="#">info@corhike.com</a></p>
+                    </div>
+                    <div class="col-md-5 col-sm-4 col-xs-12">
+                        <ul class="social-icon">
+                            <li><span>Meet us on</span></li>
+                            <li><a href="#" class="fa fa-facebook fa-lg"></a></li>
+{#                            <li><a href="#" class="fa fa-twitter"></a></li>#}
+{#                            <li><a href="#" class="fa fa-instagram"></a></li>#}
+							<li><a href="/login">LOGIN</a></li>
+                            <li><a href="/check_login" class="fa fa-user-circle fa-lg"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-default  templatemo-nav" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon icon-bar"></span>
+						<span class="icon icon-bar"></span>
+						<span class="icon icon-bar"></span>
+					</button>
+                    <a href="/login" class="navbar-brand"><span><font color="#28a7e9"> CORHIKE</font></span></a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#top">HOME</a></li>
+                        <li><a href="#about">ABOUT</a></li>
+						<li><a href="#service">NEWS</a></li>
+						<li><a href="#expert">EXPERT</a></li>
+{#						<li><a href="#founder">FOUNDER</a></li>#}
+{#						<li><a href="#videos">VIDEO</a></li>#}
+						<li><a href="#contact">CONTACT</a></li>
+                        <li></li>
+
+                        <div class="dropdown" style="padding-top:15px;">
+                          <li><a  class="dropbtn" style="text-decoration: none;">REGISTER</a></li>
+                          <div class="dropdown-content" style="background-color: #f6f6f6">
+                          <a href="/student_registration">Student </a>
+                          <a href="/register_expert">Expert</a>
+                          </div>
+                        </div>
+					</ul>
+				</div>
+			</div>
+		</nav>
+        </header>
+        <!-- end header -->
+
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper " style="margin-left:5px; margin-right: 5px; background-color: #303030 " >
+
+
+        <!-- start home -->
+    	<section id="home"  style="padding-top: 200px;background-image: url({% static 'Admin/home-bg.jpg'%});">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-md-offset-2 col-md-8"><br><br><br>
+    					<h1 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">WE MAKE RELATION WE ARE <span>CORHIKE</span></h1>
+    					<a data-scroll href="/login" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">GET STARTED</a>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+    	<!-- end home -->
+
+        <!-- start about -->
+  <div class style="background-color: #303030">
+		<section id="about" style="padding-top: 110px; padding-right : 50px; padding-left : 50px;">
+
+            <div class="row">
+
+					<div class="col-md-12">
+    					<h2 class="wow bounceIn" data-wow-offset="50" style="padding-bottom:0px" data-wow-delay="0.3s">WE ARE <span>CORHIKE</span></h2>
+                        <h4 style="padding-top:20px;padding-bottom:50px;align-content: center ;text-align: Center;">We are the Pune base start up working on knowledge transfer & building relation between Universities & Corporate.<br>Our vision is to bring professional relation in community.. </h4>
+    				</div>
+					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft"  data-wow-offset="50" data-wow-delay="0.6s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<i class="fa fa-user-secret fa-lg"></i>
+								</div>
+								<h3 class="media-heading">CORHIKE FOR EXPERT</h3>
+							</div>
+							<div class="media-body" style="text-align: justify">
+								<p>CORHIKE create network of corporate expert to connect with students from Universities & other company employee. CORHIKE is design such a way that expert communicate with other company employee & student without disturbing their personal life by appointment system. It also have review & recommendation system to find competences within them.
+                                </p>
+							</div>
+						</div>
+					</div>
+               <div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft"  data-wow-offset="50" data-wow-delay="0.6s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<i class="fa fa-search fa-lg"></i>
+								</div>
+								<h3 class=media-heading-wrapper>FOUNDER OF <span>CORHIKE</span></h3>
+							</div>
+							<div class="team-wrapper" style="padding-left: 25%; padding-right: 25%; padding-bottom: 50px">
+    						<img src="{% static 'Admin/founder.png'%}" class="img-responsive" alt="Abhilash Arsod">
+    							<div class="team-des" align="center">
+    								<h4>ABHILASH ARSOD</h4>
+    								<span>FOUNDER</span>
+    								<p>MBA Marketing</p>
+    							</div>
+    					    </div>
+						</div>
+                </div>
+				<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<i class="fa fa-graduation-cap fa-lg"></i>
+								</div>
+								<h3 class="media-heading">CORHIKE FOR STUDENT</h3>
+							</div>
+							<div class="media-body" style="text-align: justify">
+                                <p> CORHIKE gives platform to University student to increase professional relation with corporate. It help them to increase their field knowledge & to find right carrier path. It aware those about competences need for jobs, challenges, work culture & opportunities. Expert help student to find competences within them by review system.
+
+                                </p>
+							</div>
+						</div>
+					</div>
+            </div>
+		</section>
+  </div>
+		<!-- end about -->
+  <div class style="background-color: #303030">
+{#      <section id="expert" style="padding-top: 121px">#}
+{#		<span class="content-header">#}
+{#            <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">OUR <span>EXPERTS</span></h2>#}
+{#		</span>#}
+{#        <div class="me">#}
+{#  <ul class="nav nav-pills" style="text-align:center; padding-left: 50px;">#}
+{#    <li class="active" ><a data-toggle="pill" href="#menu0" ><b>Management</b></a></li>#}
+{#    <li><a data-toggle="pill" href="#menu1"><b>Engineering</b></a></li>#}
+{#    <li><a data-toggle="pill" href="#menu2"><b>Pharmacy</b></a></li>#}
+{#    <li><a data-toggle="pill" href="#menu3">Other</a></li>#}
+{#  </ul>#}
+{#        </div>#}
+{#  <br>#}
+{#  <div class="tab-content " style="padding-left: 50px;">#}
+{#    <div id="menu0" class="tab-pane fade in active">#}
+{#        <div class="row" id="management" style="display:block">#}
+{#            {% for each_expert in expert_m %}#}
+{#                 <div class="col-md-5 col-md-auto">#}
+{#                          <!-- Widget: user widget style 1 -->#}
+{#                          <div class="box box-widget widget-user">#}
+{##}
+{#            <!-- Add the bg color to the header using any of the bg-* classes -->#}
+{#            <div class="widget-user-header bg-aqua-active">#}
+{#              <h3 class="widget-user-username">{{ each_expert.name }}</h3>#}
+{#              <h5 class="widget-user-desc">{{ each_expert.Designation }}</h5>#}
+{#            </div>#}
+{#            <div class="widget-user-image">#}
+{#              <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">#}
+{#            </div>#}
+{#            <div class="box-footer" style="background-color: #5a5a5a;">#}
+{#              <div class="row">#}
+{#                <div class="col-sm-4 border-right">#}
+{#                  <div class="description-block">#}
+{#                    <h5 class="description-header">3</h5>#}
+{#                    <span class="description-text">Video Delivered</span>#}
+{#                  </div>#}
+{#                  <!-- /.description-block -->#}
+{#                </div>#}
+{#                <!-- /.col -->#}
+{#                <div class="col-sm-4 border-right">#}
+{#                  <div class="description-block">#}
+{#                    <h5 class="description-header">2</h5>#}
+{#                    <span class="description-text">FOLLOWERS</span>#}
+{#                  </div>#}
+{#                  <!-- /.description-block -->#}
+{#                </div>#}
+{#                <!-- /.col -->#}
+{#                <div class="col-sm-4">#}
+{#                  <div class="description-block">#}
+{#                    <h5 class="description-header"><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></h5>#}
+{#                    <span class="description-text">Rating</span>#}
+{#                  </div>#}
+{#                  <!-- /.description-block -->#}
+{#                </div>#}
+{#                <!-- /.col -->#}
+{#              </div>#}
+{##}
+{#                <div  data-toggle="collapse" data-target=".collapse" style="text-align: left;float: left">View more</div>#}
+{#                <div class="collapse">#}
+{#                    <br>#}
+{#                    Company Name:- <span class="description-text">SKS</span><br>#}
+{#                    Year Of Experience :-<span class="description-text">10 year</span><br>#}
+{#                    <hr style="border: 1px solid white;" />#}
+{#                     <span class="description-text">Activity</span><br>#}
+{##}
+{#            </div>#}
+{##}
+{#          </div>#}
+{#          <!-- /.widget-user -->#}
+{#        </div>#}
+{#                 </div>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    </div>#}
+{#    <div id="menu1" class="tab-pane fade">#}
+{#       <div class="row" id="engineering">#}
+{##}
+{#       {% for each_expert in expert_e %}#}
+{#                 <div class="col-md-5 col-md-auto">#}
+{#          <!-- Widget: user widget style 1 -->#}
+{#          <div class="box box-widget widget-user">#}
+{##}
+{#            <!-- Add the bg color to the header using any of the bg-* classes -->#}
+{#            <div class="widget-user-header bg-aqua-active">#}
+{#              <h3 class="widget-user-username">{{ each_expert.name }}</h3>#}
+{#              <h5 class="widget-user-desc">{{ each_expert.Designation }}</h5>#}
+{#            </div>#}
+{#            <div class="widget-user-image">#}
+{#              <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">#}
+{#            </div>#}
+{#            <div class="box-footer" style="background-color: #5a5a5a;">#}
+{#              <div class="row">#}
+{#                <div class="col-sm-4 border-right">#}
+{#                  <div class="description-block">#}
+{#                    <h5 class="description-header">3</h5>#}
+{#                    <span class="description-text">Video Delivered</span>#}
+{#                  </div>#}
+{#                  <!-- /.description-block -->#}
+{#                </div>#}
+{#                <!-- /.col -->#}
+{#                <div class="col-sm-4 border-right">#}
+{#                  <div class="description-block">#}
+{#                    <h5 class="description-header">2</h5>#}
+{#                    <span class="description-text">FOLLOWERS</span>#}
+{#                  </div>#}
+{#                  <!-- /.description-block -->#}
+{#                </div>#}
+{#                <!-- /.col -->#}
+{#                <div class="col-sm-4">#}
+{#                  <div class="description-block">#}
+{#                    <h5 class="description-header"><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></h5>#}
+{#                    <span class="description-text">Rating</span>#}
+{#                  </div>#}
+{#                  <!-- /.description-block -->#}
+{#                </div>#}
+{#                <!-- /.col -->#}
+{#              </div>#}
+{#                 <div  data-toggle="collapse" data-target=".collapse" style="text-align: left;float: left">View more</div>#}
+{#                <div class="collapse">#}
+{#                    <br>#}
+{#                    Company Name:- <span class="description-text">SKS</span><br>#}
+{#                    Year Of Experience :-<span class="description-text">10 year</span><br>#}
+{#                    <hr style="border: 1px solid white;" />#}
+{#                     <span class="description-text">Activity</span><br>#}
+{#                </div>#}
+{#              <!-- /.row -->#}
+{#            </div>#}
+{#          </div>#}
+{#          <!-- /.widget-user -->#}
+{#        </div>#}
+{#       {% endfor %}#}
+{#      </div>#}
+{##}
+{#    </div>#}
+{#    <div id="menu2" class="tab-pane fade">#}
+{#       <div class="row" id="engineering">#}
+{#       <div class="col-md-4">#}
+{#          <!-- Widget: user widget style 1 -->#}
+{#          <div class="box box-widget widget-user">#}
+{##}
+{#            <!-- Add the bg color to the header using any of the bg-* classes -->#}
+{#            <div class="widget-user-header bg-aqua-active">#}
+{#              <h3 class="widget-user-username">Expert Name</h3>#}
+{#              <h5 class="widget-user-desc">Designation &amp; Company</h5>#}
+{#                <div style="float: left"><button class="btn btn-sm btn-success">Connect</button></div>#}
+{#                <div style="float: right"><button class="btn btn-sm btn-warning">Email</button></div>#}
+{#            </div>#}
+{#            <div class="widget-user-image">#}
+{#              <img class="img-circle" src="{% static 'Admin/dist/img/user2-160x160.jpg' %}" alt="User Avatar">#}
+{#            </div>#}
+{#            <div class="box-footer text-black">#}
+{#              <div class="row">#}
+{#                <div class="col-sm-4 border-right">#}
+{#                  <div class="description-block">#}
+{#                    <h5 class="description-header">3</h5>#}
+{#                    <span class="description-text text-black">Video Delivered</span>#}
+{#                  </div>#}
+{#                  <!-- /.description-block -->#}
+{#                </div>#}
+{#                <!-- /.col -->#}
+{#                <div class="col-sm-3 border-right">#}
+{#                  <div class="description-block">#}
+{#                    <h5 class="description-header">10</h5>#}
+{#                    <span class="description-text">FOLLOWERS</span>#}
+{#                  </div>#}
+{#                  <!-- /.description-block -->#}
+{#                </div>#}
+{#                <!-- /.col -->#}
+{#                <div class="col-sm-5">#}
+{#                  <div class="description-block">#}
+{#                    <h5 class="description-header"><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></h5>#}
+{#                    <span class="description-text">Recommendation</span>#}
+{#                  </div>#}
+{#                  <!-- /.description-block -->#}
+{#                </div>#}
+{#                <!-- /.col -->#}
+{#              </div>#}
+{##}
+{#         <div class="box box-default collapsed-box">#}
+{#            <div class="box-header with-border">#}
+{#              <h3 class="box-title">View More</h3>#}
+{##}
+{#              <div class="box-tools pull-right">#}
+{#                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>#}
+{#                </button>#}
+{#              </div>#}
+{#              <!-- /.box-tools -->#}
+{#            </div>#}
+{#            <!-- /.box-header -->#}
+{#            <div class="box-body" style="display: none;">#}
+{#                 <ul>#}
+{#                            <li class="list-group-item">#}
+{#                              <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>#}
+{#                               <p>#}
+{#                                      <span class="label label-info">JAVA</span>#}
+{#                                   <span class="label label-info">C</span>#}
+{#                                   <span class="label label-info">Python</span>#}
+{##}
+{##}
+{#                               </p>#}
+{#                          </li>#}
+{#                        </ul>#}
+{#                <table class="table">#}
+{##}
+{#                    <tr>#}
+{#                        <td>#}
+{#                           Year Of Experience#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            10 Years#}
+{#                        </td>#}
+{#                    </tr>#}
+{##}
+{#                    <tr>#}
+{#                        <td>#}
+{#                         About#}
+{#                        </td>#}
+{#                    </tr>#}
+{#                    <tr>#}
+{#                        <td>#}
+{#                            Activity#}
+{#                        </td>#}
+{#                        <td>#}
+{##}
+{#                        </td>#}
+{#                    </tr>#}
+{#                </table>#}
+{##}
+{#            </div>#}
+{#            <!-- /.box-body -->#}
+{##}
+{#          <!-- /.box -->#}
+{#        </div>#}
+{#              <!-- /.row -->#}
+{#            </div>#}
+{#          </div>#}
+{#          <!-- /.widget-user -->#}
+{#        </div>#}
+{##}
+{#            {% for each_expert in expert_p %}#}
+{##}
+{#                 <div class="col-md-5 col-md-auto">#}
+{#          <!-- Widget: user widget style 1 -->#}
+{#          <div class="box box-widget widget-user">#}
+{##}
+{#            <!-- Add the bg color to the header using any of the bg-* classes -->#}
+{#            <div class="widget-user-header bg-aqua-active">#}
+{#              <h3 class="widget-user-username">{{ each_expert.name }}</h3>#}
+{#              <h5 class="widget-user-desc">{{ each_expert.Designation }}</h5>#}
+{#            </div>#}
+{#            <div class="widget-user-image">#}
+{#              <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">#}
+{#            </div>#}
+{#            <div class="box-footer" style="background-color: #5a5a5a;">#}
+{#              <div class="row">#}
+{#                <div class="col-sm-4 border-right">#}
+{#                  <div class="description-block">#}
+{#                    <h5 class="description-header">3</h5>#}
+{#                    <span class="description-text">Video Delivered</span>#}
+{#                  </div>#}
+{#                  <!-- /.description-block -->#}
+{#                </div>#}
+{#                <!-- /.col -->#}
+{#                <div class="col-sm-4 border-right">#}
+{#                  <div class="description-block">#}
+{#                    <h5 class="description-header">1</h5>#}
+{#                    <span class="description-text">FOLLOWERS</span>#}
+{#                  </div>#}
+{#                  <!-- /.description-block -->#}
+{#                </div>#}
+{#                <!-- /.col -->#}
+{#                <div class="col-sm-4">#}
+{#                  <div class="description-block">#}
+{#                    <h5 class="description-header"><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></h5>#}
+{#                    <span class="description-text">Rating</span>#}
+{#                  </div>#}
+{#                  <!-- /.description-block -->#}
+{#                </div>#}
+{#                <!-- /.col -->#}
+{#              </div>#}
+{#                 <div  data-toggle="collapse" data-target=".collapse" style="text-align: left;float: left">View more</div>#}
+{#                <div class="collapse">#}
+{#                    <br>#}
+{#                    Company Name:- <span class="description-text">SKS</span><br>#}
+{#                    Year Of Experience :-<span class="description-text">10 year</span><br>#}
+{#                    <hr style="border: 1px solid white;" />#}
+{#                     <span class="description-text">Activity</span><br>#}
+{#                </div>#}
+{#              <!-- /.row -->#}
+{#            </div>#}
+{#          </div>#}
+{#          <!-- /.widget-user -->#}
+{#        </div>#}
+{##}
+{#            {% endfor %}#}
+{#      </div>#}
+{##}
+{#    </div>#}
+{#    <div id="menu3" class="tab-pane fade">#}
+{#      <h3>None</h3>#}
+{#    </div>#}
+{#  </div>#}
+{##}
+{#	  </section>#}
+</div>
+      <section id="expert" style="padding-top: 121px">
+		<span class="content-header">
+            <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">OUR <span>EXPERTS</span></h2>
+		</span>
+        <div class="me">
+  <ul class="nav nav-pills" style="text-align:center; padding-left: 50px;">
+    <li class="active" ><a data-toggle="pill" href="#menu0" ><b>Management</b></a></li>
+    <li><a data-toggle="pill" href="#menu1"><b>Engineering</b></a></li>
+    <li><a data-toggle="pill" href="#menu2"><b>Pharmacy</b></a></li>
+{#    <li><a data-toggle="pill" href="#menu3">Other</a></li>#}
+  </ul>
+        </div>
+  <br>
+  <div class="tab-content " style="padding-left: 50px;">
+    <div id="menu0" class="tab-pane fade in active">
+        <div class="row" id="management" style="display:block">
+            {% for each_expert in expert_m %}
+                <div class="col-md-5 col-md-auto">
+                      <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user" >
+
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                        <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username" onclick="location.href='coreHike/show_expert_profile/{{ each_expert.id }}'" style="cursor: pointer">{{ each_expert.name }}</h3>
+                          <h5 class="widget-user-desc">{{ each_expert.Designation }} &amp; {{ each_expert.Company_Name }}</h5>
+                            {% for expert_id, count in m_connect.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          {% if count == 'connected' %}
+                                                    <div  style="float: left;display: block"><button class="btn btn-sm btn-success" >Connected</button></div>
+                                              {% elif count == 'requested' %}
+                                                    <div id="{{ each_expert.id }}_requested" style="float: left;display: block"><button class="btn btn-sm btn-success" >Requested</button></div>
+                                              {% else %}
+                                                    <div id="{{ each_expert.id }}_connect" style="float: left;display: block"><button class="btn btn-sm btn-success" onclick="send_connect_request({{ each_expert.id }},{{ expert.id }})">Connect</button></div>
+                                              {% endif %}
+                                      {% endif %}
+                                                    <div id="{{ each_expert.id }}_requested" style="float: left;display: none"><button class="btn btn-sm btn-success" >Requested</button></div>
+
+                            {% endfor %}
+
+
+{#                            <div style="float: right"><button class="btn btn-sm btn-warning">Email</button></div>#}
+                        </div>
+                        <div class="widget-user-image">
+                          <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">
+                        </div>
+                        <div class="box-footer text-black">
+                          <div class="row">
+                            <div class="col-sm-4 border-right">
+                              <div class="description-block">
+                                {% for expert_id, count in m_lecture_delivered.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          <h5 class="description-header">{{ count }}</h5>
+                                      {% endif %}
+                                  {% endfor %}
+                                  <span class="description-text text-black">Video Delivered</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 border-right">
+                              <div class="description-block">
+                                {% for expert_id, count in m_follower_count.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          <h5 class="description-header">{{ count }}</h5>
+                                      {% endif %}
+                                  {% endfor %}
+                                <span class="description-text">FOLLOWERS</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-5">
+                              <div class="description-block">
+                                  {% for expert_id, count in m_reviwes.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          <h5 class="description-header text-black">{{ count }}</h5>
+                                      {% endif %}
+                                  {% endfor %}
+                                  <span class="description-text">Recommendation</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                          </div>
+
+                     <div class="box box-default collapsed-box">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">View More</h3>
+
+                          <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                            </button>
+                          </div>
+                          <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" style="display: none;">
+                             <ul>
+                                        <li class="list-group-item">
+                                          <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                                           <p>
+            {#                                     {%  for each_skill in each_expert.Skill %}#}
+            {#                                       <span class="label label-info">{{ each_skill }}</span>#}
+            {#                                   {% endfor %}#}
+                                               {{ each_expert.Skill }}
+
+                                           </p>
+                                      </li>
+                                    </ul>
+                            <table class="table">
+
+                                <tr>
+                                    <td>
+                                       Year Of Experience
+                                    </td>
+                                    <td>
+                                        {{ each_expert.Field_of_Experience }}
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                     About :  {{ each_expert.about }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Activity
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <!-- /.box-body -->
+
+                      <!-- /.box -->
+                    </div>
+                          <!-- /.row -->
+                        </div>
+                      </div>
+                      <!-- /.widget-user -->
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+       <div class="row" id="engineering">
+           {% for each_expert in expert_e %}
+                    <div class="col-md-5 col-md-auto">
+              <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user" >
+
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username" onclick="location.href='coreHike/show_expert_profile/{{ each_expert.id }}'" style="cursor: pointer">{{ each_expert.name }}</h3>
+                  <h5 class="widget-user-desc">{{ each_expert.Designation }} &amp; {{ each_expert.Company_Name }}</h5>
+                                {% for expert_id, count in e_connect.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          {% if count == 'connected' %}
+                                                    <div  style="float: left;display: block"><button class="btn btn-sm btn-success" >Connected</button></div>
+                                              {% elif count == 'requested' %}
+                                                    <div id="{{ each_expert.id }}_requested" style="float: left;display: block"><button class="btn btn-sm btn-success" >Requested</button></div>
+                                              {% else %}
+                                                    <div id="{{ each_expert.id }}_connect" style="float: left;display: block"><button class="btn btn-sm btn-success" onclick="send_connect_request({{ each_expert.id }},{{ expert.id }})">Connect</button></div>
+                                              {% endif %}
+                                      {% endif %}
+                                                    <div id="{{ each_expert.id }}_requested" style="float: left;display: none"><button class="btn btn-sm btn-success" >Requested</button></div>
+                            {% endfor %}
+{#                    <div style="float: right"><button class="btn btn-sm btn-warning">Email</button></div>#}
+                </div>
+                <div class="widget-user-image">
+                  <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">
+                </div>
+                <div class="box-footer text-black">
+                  <div class="row">
+                    <div class="col-sm-4 border-right">
+                      <div class="description-block">
+                          {% for expert_id, count in e_lecture_delivered.items %}
+                              {% if expert_id == each_expert.id %}
+                                  <h5 class="description-header">{{ count }}</h5>
+                              {% endif %}
+                          {% endfor %}
+                        <span class="description-text text-black">Video Delivered</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-3 border-right">
+                      <div class="description-block">
+                        {% for expert_id, count in e_follower_count.items %}
+                              {% if expert_id == each_expert.id %}
+                                  <h5 class="description-header">{{ count }}</h5>
+                              {% endif %}
+                          {% endfor %}
+                        <span class="description-text">FOLLOWERS</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-5">
+                      <div class="description-block">
+                                {% for expert_id, count in e_reviwes.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          <h5 class="description-header text-black">{{ count }}</h5>
+                                      {% endif %}
+                                  {% endfor %}
+                          <span class="description-text">Recommendation</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+
+             <div class="box box-default collapsed-box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">View More</h3>
+
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                  <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" style="display: none;">
+                     <ul>
+                                <li class="list-group-item">
+                                  <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                                   <p>
+    {#                                      {%  for each_skill in each_expert.Skill %}#}
+    {#                                   <span class="label label-info">{{ each_skill }}</span>#}
+    {#                               {% endfor %}#}
+                                        {{ each_expert.Skill }}
+                                   </p>
+                              </li>
+                            </ul>
+                    <table class="table">
+
+                        <tr>
+                            <td>
+                               Year Of Experience
+                            </td>
+                            <td>
+                                 {{ each_expert.Field_of_Experience }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                             About:  {{ each_expert.about }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Activity
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <!-- /.box-body -->
+
+              <!-- /.box -->
+            </div>
+                  <!-- /.row -->
+                </div>
+              </div>
+              <!-- /.widget-user -->
+            </div>
+           {% endfor %}
+        </div>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+       <div class="row" id="pharamacy">
+
+            {% for each_expert in expert_p %}
+                <div class="col-md-5 col-md-auto">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user" >
+
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username" onclick="location.href='coreHike/show_expert_profile/{{ each_expert.id }}'" style="cursor: pointer">{{ each_expert.name }}</h3>
+              <h5 class="widget-user-desc">{{ each_expert.Designation }} &amp; {{ each_expert.Company_Name }}</h5>
+                        {% for expert_id, count in p_connect.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          {% if count == 'connected' %}
+                                                    <div  style="float: left;display: block"><button class="btn btn-sm btn-success" >Connected</button></div>
+                                              {% elif count == 'requested' %}
+                                                    <div id="{{ each_expert.id }}_requested" style="float: left;display: block"><button class="btn btn-sm btn-success" >Requested</button></div>
+                                              {% else %}
+                                                    <div id="{{ each_expert.id }}_connect" style="float: left;display: block"><button class="btn btn-sm btn-success" onclick="send_connect_request({{ each_expert.id }},{{ expert.id }})">Connect</button></div>
+                                              {% endif %}
+                                      {% endif %}
+                                                     <div id="{{ each_expert.id }}_requested" style="float: left;display: none"><button class="btn btn-sm btn-success" >Requested</button></div>
+
+                            {% endfor %}
+{#                <div style="float: right"><button class="btn btn-sm btn-warning">Email</button></div>#}
+            </div>
+            <div class="widget-user-image">
+              <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">
+            </div>
+            <div class="box-footer text-black">
+              <div class="row">
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    {% for expert_id, count in p_lecture_delivered.items %}
+                          {% if expert_id == each_expert.id %}
+                              <h5 class="description-header">{{ count }}</h5>
+                          {% endif %}
+                      {% endfor %}
+                      <span class="description-text text-black">Video Delivered</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-3 border-right">
+                  <div class="description-block">
+                    {% for expert_id, count in p_follower_count.items %}
+                          {% if expert_id == each_expert.id %}
+                              <h5 class="description-header">{{ count }}</h5>
+                          {% endif %}
+                      {% endfor %}
+                    <span class="description-text">FOLLOWERS</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-5">
+                  <div class="description-block">
+                                    {% for expert_id, count in p_reviwes.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          <h5 class="description-header text-black">{{ count }}</h5>
+                                      {% endif %}
+                                  {% endfor %}
+                      <span class="description-text">Recommendation</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+              </div>
+
+         <div class="box box-default collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">View More</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                </button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" style="display: none;">
+                 <ul>
+                            <li class="list-group-item">
+                              <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                               <p>
+{#                                     {%  for each_skill in each_expert.Skill %}#}
+{#                                   <span class="label label-info">{{ each_skill }}</span>#}
+{#                               {% endfor %}#}
+ {{ each_expert.Skill }}
+                               </p>
+                          </li>
+                        </ul>
+                <table class="table">
+
+                    <tr>
+                        <td>
+                           Year Of Experience
+                        </td>
+                        <td>
+                            {{ each_expert.Field_of_Experience }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                         About:  {{ each_expert.about }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Activity
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <!-- /.box-body -->
+
+          <!-- /.box -->
+        </div>
+              <!-- /.row -->
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+                <!-- Widget: user widget style 1 -->
+            {% endfor %}
+      </div>
+
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      {% for each_expert in expert_o %}
+                <div class="col-md-5 col-md-auto">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user" >
+
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username" onclick="location.href='coreHike/show_expert_profile/{{ each_expert.id }}'" style="cursor: pointer">{{ each_expert.name }}</h3>
+              <h5 class="widget-user-desc">{{ each_expert.Designation }} &amp; {{ each_expert.Company_Name }}</h5>
+                            {% for expert_id, count in o_connect.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          {% if count == 'connected' %}
+                                                    <div  style="float: left;display: block"><button class="btn btn-sm btn-success" >Connected</button></div>
+                                              {% elif count == 'requested' %}
+                                                    <div  style="float: left;display: block"><button class="btn btn-sm btn-success" >Requested</button></div>
+                                              {% else %}
+                                                    <div id="{{ each_expert.id }}_connect" style="float: left;display: block"><button class="btn btn-sm btn-success" onclick="send_connect_request({{ each_expert.id }},{{ expert.id }})">Connect</button></div>
+                                              {% endif %}
+                                      {% endif %}
+                                                    <div id="{{ each_expert.id }}_requested" style="float: left;display: none"><button class="btn btn-sm btn-success" >Requested</button></div>
+
+                            {% endfor %}
+{#                <div style="float: right"><button class="btn btn-sm btn-warning">Email</button></div>#}
+            </div>
+            <div class="widget-user-image">
+              <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">
+            </div>
+            <div class="box-footer text-black">
+              <div class="row">
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    {% for expert_id, count in o_lecture_delivered.items %}
+                          {% if expert_id == each_expert.id %}
+                              <h5 class="description-header">{{ count }}</h5>
+                          {% endif %}
+                      {% endfor %}
+                      <span class="description-text text-black">Video Delivered</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-3 border-right">
+                  <div class="description-block">
+                    {% for expert_id, count in o_follower_count.items %}
+                          {% if expert_id == each_expert.id %}
+                              <h5 class="description-header">{{ count }}</h5>
+                          {% endif %}
+                      {% endfor %}
+                      <span class="description-text">FOLLOWERS</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-5">
+                  <div class="description-block">
+                                    {% for expert_id, count in o_reviwes.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          <h5 class="description-header text-black">{{ count }}</h5>
+                                      {% endif %}
+                                  {% endfor %}
+                      <span class="description-text">Recommendation</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+              </div>
+
+         <div class="box box-default collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">View More</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                </button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" style="display: none;">
+                 <ul>
+                            <li class="list-group-item">
+                              <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+{#                               {%  for each_skill in each_expert.Skill %}#}
+{#                                   <span class="label label-info">{{ each_skill }}</span>#}
+{#                               {% endfor %}#}
+                                 {{ each_expert.Skill }}
+                          </li>
+                        </ul>
+                <table class="table">
+
+                    <tr>
+                        <td>
+                           Year Of Experience
+                        </td>
+                        <td>
+                             {{ each_expert.Field_of_Experience }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                         About:  {{ each_expert.about }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Activity
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <!-- /.box-body -->
+
+          <!-- /.box -->
+        </div>
+              <!-- /.row -->
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+
+        {% endfor %}
+    </div>
+  </div>
+    </section>
+
+	    <br>
+
+        <!-- /video section-->
+	 <!--   {# {% comment %} <section id="videos">
+	  <span class="content-header">
+		  <h1>
+			Guest's video
+		  </h1>
+		</span>
+		<div class="row">
+		<div class="col-md-4">
+		<div class="timeline-item">
+
+                <h3 class="timeline-header"><a href="#">Guest's</a> shared video</h3>
+
+                <div class="timeline-body">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" allowfullscreen="" frameborder="0"></iframe>
+                  </div>
+                </div>
+                <div class="timeline-footer">
+                  <a href="#" class="btn btn-xs bg-maroon">Title</a>
+                </div>
+              </div>
+		</div>
+		<div class="col-md-4">
+		<div class="timeline-item">
+
+                <h3 class="timeline-header"><a href="#">Guest's</a> shared video</h3>
+
+                <div class="timeline-body">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" allowfullscreen="" frameborder="0"></iframe>
+                  </div>
+                </div>
+                <div class="timeline-footer">
+                  <a href="#" class="btn btn-xs bg-maroon">Title</a>
+                </div>
+              </div>
+		</div>
+		<div class="col-md-4">
+		<div class="timeline-item">
+
+                <h3 class="timeline-header"><a href="#">Guest's</a> shared video</h3>
+
+                <div class="timeline-body">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" allowfullscreen="" frameborder="0"></iframe>
+                  </div>
+                </div>
+                <div class="timeline-footer">
+                  <a href="#" class="btn btn-xs bg-maroon">Title</a>
+                </div>
+              </div>
+		</div>
+		</div>
+
+		</section>{% endcomment %}
+		<br>#}  -->
+        <!-- Left col -->
+<div class="" style="background-color: #303030;">
+		<section id="service" style="padding-top: 121px;padding-left: 50px;padding-right: 50px">
+				<div class="row">
+                    <div class="col-md-12">
+    					<h2 class="wow bounceIn" data-wow-offset="50" style="padding-bottom:0px" data-wow-delay="0.3s">NEWS AND <span>SERVICES</span></h2>
+    				</div>
+					<div class="col-md-12">
+        <section class="col-lg-6 " style="padding-top: 50px;" id="news">
+          <!-- Custom tabs (Charts with tabs)-->
+          <div class="nav-tabs-custom" style="height: 200px;">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs pull-right">
+              <li class="pull-left header"><i class=""></i> NEWS FEED</li>
+            </ul>
+            <div class="tab-content" style="height: 250px;">
+               <marquee id="scroll_news" direction="up" scrolldelay="150" behavior="scroll"   style="color: black">
+                   <div onMouseOver="document.getElementById('scroll_news').stop();" onMouseOut="document.getElementById('scroll_news').start();">
+                     {% for n in news %}
+                        <p>
+                        {{ n.news }}
+                        </p>
+                    {% endfor %}
+
+                   </div>
+               </marquee>
+
+            </div>
+              
+          </div>
+          <!-- /.nav-tabs-custom -->
+          <!-- quick email widget -->
+		  </section>
+
+        <section class="col-lg-6 " style="padding-top: 50px" id="service">
+          <!-- Custom tabs (Charts with tabs)-->
+
+          <div class="nav-tabs-custom" style="height: 200px;">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs pull-right">
+              <li class="pull-left header"><i class=""></i>Advertisement</li>
+            </ul>
+            <div class="tab-content" style="height: 250px;">
+                <div class="row">
+                    <div class="col-md-6">
+		            <div class="timeline-item">
+
+{#                <h3 class="timeline-header"><a href="#">Guest's</a> shared video</h3>#}
+
+                <div class="timeline-body">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" allowfullscreen="" frameborder="0"></iframe>
+                  </div>
+                </div>
+
+              </div>
+                    </div>
+                </div>
+            </div>
+
+          </div>
+          <!-- /.nav-tabs-custom -->
+          <!-- quick email widget -->
+		  </section>
+                    </div>
+                </div>
+        </section>
+</div>
+
+      <!--contact section-->
+      <!-- start contact -->
+
+ <div >
+    	<section style="padding-top: 121px; padding-left:50px; padding-right:50px;"  id="contact">
+    			<div class="row">
+    				<div class="col-md-12">
+    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONTACT <span>CORHIKE</span></h2>
+    				</div>
+    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
+    					<form role="form" action="/email/" method="post">
+                                {% csrf_token %}
+    						<label>NAME</label>
+    						<input name="fullname" type="text" class="form-control" id="fullname">
+
+                            <label>EMAIL</label>
+    						<input name="email" type="email" class="form-control" id="email">
+
+                            <label>MESSAGE</label>
+    						<textarea name="message" rows="4" class="form-control" id="message" style="resize: none"></textarea>
+
+                            <input type="submit" class="form-control">
+    					</form>
+
+    				</div>
+    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+    					                        <address>
+    						<p class="address-title">OUR ADDRESS</p>
+    						<span>To bring professional relation in community. </span>
+{#    						<p><i class="fa fa-phone fa-lg"></i> 9620950615</p>#}
+    						<p><i class="fa fa-envelope-o fa-lg"></i>info@corhike.com</p>
+    						<p><i class="fa fa-map-marker fa-lg"></i> Plot No. 78, Behind Vithhal Mandir,Karve Nagar pune 411052
+                            <br>
+                        <br>
+                        <br>
+                        <br></p>
+    					</address>
+
+    					<ul class="social-icon">
+    						<li><h4>WE ARE SOCIAL</h4></li>
+    						<li><a href="#" class="fa fa-facebook fa-lg"></a></li>
+    						<li><a href="#" class="fa fa-twitter fa-lg"></a></li>
+    						<li><a href="#" class="fa fa-instagram fa-lg"></a></li>
+    					</ul>
+    				</div>
+    			</div>
+    	</section>
+  </div>
+    	<!-- end contact -->
+		 {% comment %} <section class="col-lg-7 connectedSortable" id="contact">
+          <div class="box box-info">
+            <div class="box-header">
+              <i class="fa fa-envelope"></i>
+
+              <h3 class="box-title">Contact US</h3>
+              <!-- tools box -->
+              <!-- /. tools -->
+            </div>
+            <div class="box-body">
+              <form action="#" method="post">
+                <div class="form-group">
+                  <input type="email" class="form-control" name="emailto" placeholder="Email to:">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject">
+                </div>
+
+                  <textarea class="textarea" placeholder="Message"
+                            style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="box-footer clearfix">
+              <button type="button" class="pull-right btn btn-default" id="sendEmail">Send
+                <i class="fa fa-arrow-circle-right"></i></button>
+            </div>
+          </div>
+
+        </section>{% endcomment %}
+        <!-- /.Left col -->
+
+      <!-- /.row (main row) -->
+    <!-- /.content -->
+  </div>
+  </div>
+</div>
+
+
+{% endblock %}

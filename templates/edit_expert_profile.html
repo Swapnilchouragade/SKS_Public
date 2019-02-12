@@ -1,0 +1,157 @@
+{% extends 'expert_base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content_expert %}
+    <script>
+    function isNumber(evt) {
+  evt = (evt) ? evt : window.event;
+  var charCode = (evt.which) ? evt.which : evt.keyCode;
+  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+    alert("Please enter only Numbers.");
+    return false;
+  }
+
+  return true;
+}
+
+function ValidateNo() {
+  var phoneNo = document.getElementById('mobile');
+
+  if (phoneNo.value == "" || phoneNo.value == null) {
+    alert("Please enter your Mobile No.");
+    return false;
+  }
+  if (phoneNo.value.length < 10 || phoneNo.value.length > 10) {
+    alert("Mobile No. is not valid, Please Enter 10 Digit Mobile No.");
+    return false;
+  }
+
+  return true;
+}
+    </script>
+  <div class="content-wrapper">
+      <br>
+      <br>
+    <section class="content">
+    <form action="/register_expert/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                 <table class="table">
+            <tr>
+                <td>
+                    <label>
+                        Name :
+                    </label>
+                    <input type="text" class="form-control" name="name" value="{{ each_expert.name }}" required/>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    <label>
+                        Company Name :
+                    </label>
+
+                    <input type="text" class="form-control" name="Company_Name" value="{{ each_expert.Company_Name }}"/>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    <label>
+                        Designation :
+                    </label>
+                    <input type="text" class="form-control" name="Designation" value="{{ each_expert.Designation }}" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Skill :
+                    </label>
+                    <input type="text" class="form-control" name="Skill" value="{{ each_expert.Skill }}" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Field of Experience :
+                    </label>
+                    <input type="number" class="form-control" min="7" name="Field_of_Experience" value="{{ each_expert.Field_of_Experience }}" required/>
+                </td>
+            </tr>
+                     <tr>
+                <td>
+                    <label>
+                        Department :
+                    </label>
+                    <select name="Department">
+                        <option value="{{ each_expert.Department }}" disabled>{{ each_expert.Department }}</option>
+                        <option value="management">Management</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="pharamacy">Pharamacy</option>
+                        <option value="other">Other</option>
+
+                    </select>
+                </td>
+            </tr>
+
+
+    </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table">
+                     <tr>
+                <td>
+                    <label>
+                        About :
+                    </label>
+                    <textarea  class="form-control" name="about" required style="resize: none">
+                        {{ each_expert.about }}
+                    </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Icard Picture :
+                    </label>
+                    <input type="file" class="form-control" name="Icard_Picture" value="{{ each_expert.Icard_Picture.url }}"/>
+                </td>
+            </tr>
+{#            <tr>#}
+{#                <td>#}
+{#                    <label>#}
+{#                        Password :#}
+{#                    </label>#}
+{#                    <input type="text" class="form-control" name="password" value="{{ each_expert.password }}"/>#}
+{#                </td>#}
+{#            </tr>#}
+            <tr>
+                <td>
+                    <label>
+                        Profile picture :
+                    </label>
+                    <input type="file" class="form-control" name="Profile_piture" value="{{ each_expert.Profile_piture.url }}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Mobile :
+                    </label>
+                    <input type="text" id="mobile" class="form-control" name="mobile" value="{{ each_expert.mobile }}" onkeypress="return isNumber(event)"/>
+                </td>
+            </tr>
+                </table>
+            </div>
+        </div>
+
+    <br>
+    <input type="submit" class="btn btn-success" value="Update" onclick="ValidateNo()">
+    </form>
+    </section>
+    <!-- /.content -->
+  </div>
+{% endblock %}

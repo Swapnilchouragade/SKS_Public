@@ -1,0 +1,126 @@
+{% extends 'student_base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load staticfiles %}
+{% block content_student %}
+          <div class="content-wrapper">
+          <script>
+               function isNumber(evt) {
+  evt = (evt) ? evt : window.event;
+  var charCode = (evt.which) ? evt.which : evt.keyCode;
+  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+    alert("Please enter only Numbers.");
+    return false;
+  }
+
+  return true;
+}
+
+function ValidateNo() {
+  var phoneNo = document.getElementById('mobile');
+
+  if (phoneNo.value == "" || phoneNo.value == null) {
+    alert("Please enter your Mobile No.");
+    return false;
+  }
+  if (phoneNo.value.length < 10 || phoneNo.value.length > 10) {
+    alert("Mobile No. is not valid, Please Enter 10 Digit Mobile No.");
+    return false;
+  }
+
+  return true;
+}
+          </script>
+<br>
+              <br>
+    <section class="content">
+    <form action="/update_student/" method="post" enctype="multipart/form-data"  onsubmit=" return ValidateNo()">
+                    {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                 <table class="table">
+            <tr>
+                <td>
+                    <label>
+                        Name :
+                    </label>
+                    <input type="text" class="form-control" name="name" value="{{ each_student.name }}" required/>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    <label>
+                        College Name :
+                    </label>
+                    <input type="text" class="form-control" name="Collage" value="{{ each_student.Collage }}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                       Qualification
+                    </label>
+                    <input type="text" class="form-control" name="Qualification" value="{{ each_student.Qualification }}" required/>
+                </td>
+            </tr>
+
+
+                        </table>
+            </div>
+            <div class="col-md-6">
+                 <table class="table">
+                      <tr>
+                <td>
+                    <label>
+                        Year of Experience :
+                    </label>
+                    <input type="number" class="form-control" name="Year_Experience" value="{{ each_student.Year_Experience }}" required/>
+                </td>
+            </tr>
+                     <tr hidden>
+                <td>
+                    <label>
+                        Password :
+                    </label>
+                    <input type="password" class="form-control" name="password" value="{{ each_student.password }}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Profile picture :
+                    </label>
+                    <input type="hidden" name="Profile_path" value="{{ each_student.Profile_piture.url }}">
+                    <input type="file" class="form-control" name="Profile_piture" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Mobile :
+                    </label>
+                    <input type="text" id="mobile" class="form-control" name="mobile" value="{{ each_student.mobile }}"  onkeypress="return isNumber(event)" required/>
+                </td>
+            </tr>
+            <tr hidden>
+                <td>
+                    <label>
+                        Personal Email :
+                    </label>
+                    <input type="email" class="form-control" name="Personal_Email" value="{{ each_student.Personal_Email }}"/>
+                </td>
+            </tr>
+    </table>
+            </div>
+        </div>
+
+
+    <br>
+    <input type="submit" class="btn btn-success" value="Update" onsubmit=" return ValidateNo()">
+    </form>
+    </section>
+    <!-- /.content -->
+  </div>
+{% endblock %}
+
+

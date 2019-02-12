@@ -1,0 +1,68 @@
+{% extends 'student_base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load staticfiles %}
+{% block content_student %}
+           <!-- Content Wrapper. Contains page content -->
+             <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+             <br>
+             <br>
+    <section class="content-header">
+      <h1>
+        Attended Lecture History
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+      {% if lecture_history %}
+        <div class="col-md-10">
+          <!-- general form elements -->
+            {% for each_l in lecture_history %}
+                {% for each_lecture in each_l %}
+                <div class="box box-warning box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">{{ each_lecture.title }}</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" style="">
+              <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea class="form-control" id="description" readonly style="border:0">{{ each_lecture.description }}</textarea>
+				  </div>
+                <div class="form-group">
+                  <label for="time">Time</label>
+                  <input type="text" id="time" value="{{ each_lecture.time }}" style="border:0" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="date">Date</label>
+                  <input type="text" id="date" style="border:0" value="{{ each_lecture.date }}" readonly>
+                </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+            {% endfor %}
+         {% endfor %}
+
+          </div>
+      {% else %}
+          <h3>You have not attended lectures yet.</h3>
+          <br>
+          <h2>Start following expert and Learn more by attending lectures.</h2>
+          <h3><a href="/student_index#expert">Show Experts</a></h3>
+      {% endif %}
+          <!-- /.box -->
+        </div>
+</section>
+
+      </div>
+{% endblock %}

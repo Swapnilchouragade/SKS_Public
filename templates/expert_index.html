@@ -1,0 +1,1027 @@
+{% extends 'expert_base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content_expert %}
+    <style>
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+</style>
+
+    <script>
+     function change_online_status(t,expert_id) {
+         if(t.checked)
+        {
+             $.ajax({data:{'status':1,'expert_id':expert_id},url: "/expert_online_status", success: function(result){
+                $('#online_status').show();
+                $('#offline_status').hide()
+            }
+        });
+
+        }
+        else{
+            $.ajax({data:{'status':0,'expert_id':expert_id},url: "/expert_online_status", success: function(result){
+                $('#online_status').hide();
+            $('#offline_status').show()
+
+            }
+        });
+
+        }
+
+    }
+    function send_connect_request(each_expert, expert) {
+
+         $.ajax({url: "/send_connect_request/"+each_expert.toString()+"/"+expert.toString(), success: function(result){
+                 $('#'+each_expert+'_connect').css('display','none')
+
+             $('#'+each_expert+'_requested').css('display','block')
+            }
+        });
+    }
+    </script>
+    <br>
+    <br>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <section class="content">
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                           <div class="box box-warning">
+                                <div class="box-header with-border">
+
+                                  <h5 class="box-title">Profile</h5>
+                                </div>
+                               <div class="row">
+                                       <div class="col-md-6">
+
+                                          <!-- Profile Image -->
+                                          <div class="box box-primary">
+                                            <div class="box-body box-profile">
+                                              <img class="profile-user-img img-responsive img-circle" src="{{ MEDIA_URL }}{{ expert.Profile_piture.url }}" alt="User profile picture">
+
+                                              <h3 class="profile-username text-center">{{ expert.name }}</h3>
+
+                                              <p class="text-muted text-center">{{ expert.Designation }}</p>
+
+                                              <ul class="list-group list-group-unbordered">
+                                                <li class="list-group-item">
+                                                  <b>Followers</b> <a class="pull-right">{{ expert_follower_count }}</a>
+                                                </li>
+                                                  <li class="list-group-item">
+                                                      <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                                                       <p>
+{#                                                          {%  for each_skill in Skill %}#}
+{#                                                              <span class="label label-info">{{ each_skill }}</span>#}
+{#                                                          {% endfor %}#}
+                                                           {{ expert.Skill }}
+                                                          </p>
+                                                  </li>
+
+
+                                              </ul>
+
+{#                                              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>#}
+                                            </div>
+                                            <!-- /.box-body -->
+                                          </div>
+                                          <!-- /.box -->
+
+                                          <!-- About Me Box -->
+                                          <!-- /.box -->
+                                        </div>
+                                   <div class="col-md-6">
+                                                                   <div class="box box-primary">
+                                        <div class="box-header with-border">
+                                          <h3 class="box-title">About Me</h3>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body">
+                                             <strong><i class="fa fa-edit"></i> About</strong>
+
+                                          <p class="text-muted">{{ expert.about }}</p>
+
+                                          <hr>
+                                          <strong><i class="fa fa-building"></i> Company</strong>
+
+                                          <p class="text-muted">
+                                           {{ expert.Company_Name }}
+                                          </p>
+
+                                          <hr>
+
+                                        </div>
+                                        <!-- /.box-body -->
+                                      </div>
+                                   </div>
+                           </div>
+                    </div>
+
+                    </div>
+                    <div class="col-md-6">
+                         <div class="box box-warning">
+                            <div class="box-header with-border">
+                              <h3 class="box-title">Video Chat</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <img class="img img-responsive" src="{% static 'Admin/gruveo_sc.png'%}" alt="Video Chat">
+                            </div>
+                         </div>
+
+                    </div>
+                </div>
+
+                <div class="row" >
+                        <div class="col-md-6">
+
+    {#                         <div class="col-md-6">#}
+                  <!-- USERS LIST -->
+                  <div class="box box-warning">
+                    <div class="box-header with-border">
+
+                      <h5 class="box-title">Followers</h5>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                      <ul class="users-list clearfix">
+                          {% for each_follower in expert_follower %}
+                               <li>
+                                  <img src="{{ MEDIA_URL }}{{ each_follower.Student_id.Profile_piture.url }}" alt="User Image">
+                                  <a class="users-list-name" href="#{{ each_follower.Student_id.id}}_popup">{{ each_follower.Student_id.name }}</a>
+                                   <a class="btn btn-warning" href="#{{ each_follower.Student_id.id}}_email">Email</a>
+                                   <div id="{{ each_follower.Student_id.id}}_email"  class="overlay">
+                                        <div class="popup">
+                                            <h2>Compose Email</h2>
+                                            <a class="close" href="#">&times;</a>
+                                            <div class="content">
+                                                <div class="box box-primary">
+                                            <div class="box-body box-profile" style="background-color: lightcyan">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <input class="text" type="text" name="subject" placeholder="Subject">
+
+                                                        </td>
+                                                    </tr>
+                                                     <tr>
+                                                        <td>
+                                                            <textarea name="msg" placeholder="Write your message"></textarea>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                    <input class="btn btn-success" type="submit" value="Send">
+                                            </div>
+                                            <!-- /.box-body -->
+                                          </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                   <div id="{{ each_follower.Student_id.id}}_popup"  class="overlay">
+                                        <div class="popup">
+                                            <h2>Follower Details</h2>
+                                            <a class="close" href="#">&times;</a>
+                                            <div class="content">
+                                                <div class="box box-primary">
+                                            <div class="box-body box-profile" style="background-color: lightcyan">
+                                              <h3 class="profile-username text-center">{{  each_follower.Student_id.name }}</h3>
+                                                <p class="text-muted text-center">{{  each_follower.Student_id.Collage }}</p>
+                                              <p class="text-muted text-center">{{  each_follower.Student_id.Qualification }}</p>
+
+{#                                              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>#}
+                                            </div>
+                                            <!-- /.box-body -->
+                                          </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </li>
+                          {% endfor %}
+
+                      </ul>
+                      <!-- /.users-list -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                      <a href="javascript:void(0)" class="uppercase">View All Users</a>
+                    </div>
+                    <!-- /.box-footer -->
+                  </div>
+                  <!--/.box -->
+    {#            </div>#}
+                <!-- /.col -->
+    {#          </div>#}
+              <!-- /.row -->
+
+                        </div>
+                        <div class="col-md-6">
+                  <!-- DIRECT CHAT -->
+
+                  <div class="box box-warning direct-chat direct-chat-warning">
+                    <div class="box-header with-border">
+
+                      <h3 class="box-title">Direct Chat</h3>
+
+                      <div class="box-tools pull-right">
+                        <span data-toggle="tooltip" title="" class="badge bg-yellow" data-original-title="3 New Messages">3</span>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="" data-widget="chat-pane-toggle" data-original-title="Contacts">
+                          <i class="fa fa-comments"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- /.box-header -->
+
+
+                    <div class="box-body">
+                      <!-- Conversations are loaded here -->
+                      <div class="direct-chat-messages">
+                        <!-- Message. Default to the left -->
+                        <div class="direct-chat-msg">
+                          <div class="direct-chat-info clearfix">
+                            <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                            <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+                          </div>
+                          <!-- /.direct-chat-info -->
+                          <img class="direct-chat-img" src="{% static 'Admin/dist/img/user1-128x128.jpg' %}" alt="message user image">
+                          <!-- /.direct-chat-img -->
+                          <div class="direct-chat-text">
+                            Is this template really for free? That's unbelievable!
+                          </div>
+                          <!-- /.direct-chat-text -->
+                        </div>
+                        <!-- /.direct-chat-msg -->
+
+                        <!-- Message to the right -->
+                        <div class="direct-chat-msg right">
+                          <div class="direct-chat-info clearfix">
+                            <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                            <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                          </div>
+                          <!-- /.direct-chat-info -->
+                          <img class="direct-chat-img" src="{% static 'Admin/dist/img/user3-128x128.jpg'%}" alt="message user image">
+                          <!-- /.direct-chat-img -->
+                          <div class="direct-chat-text">
+                            You better believe it!
+                          </div>
+                          <!-- /.direct-chat-text -->
+                        </div>
+                        <!-- /.direct-chat-msg -->
+
+                        <!-- Message. Default to the left -->
+                        <div class="direct-chat-msg">
+                          <div class="direct-chat-info clearfix">
+                            <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                            <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
+                          </div>
+                          <!-- /.direct-chat-info -->
+                          <img class="direct-chat-img" src="{% static 'Admin/dist/img/user1-128x128.jpg' %}" alt="message user image">
+                          <!-- /.direct-chat-img -->
+                          <div class="direct-chat-text">
+                            Working with AdminLTE on a great new app! Wanna join?
+                          </div>
+                          <!-- /.direct-chat-text -->
+                        </div>
+                        <!-- /.direct-chat-msg -->
+
+                        <!-- Message to the right -->
+                        <div class="direct-chat-msg right">
+                          <div class="direct-chat-info clearfix">
+                            <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                            <span class="direct-chat-timestamp pull-left">23 Jan 6:10 pm</span>
+                          </div>
+                          <!-- /.direct-chat-info -->
+                          <img class="direct-chat-img" src="{% static 'Admin/dist/img/user1-128x128.jpg' %}" alt="message user image">
+                          <!-- /.direct-chat-img -->
+                          <div class="direct-chat-text">
+                            I would love to.
+                          </div>
+                          <!-- /.direct-chat-text -->
+                        </div>
+                        <!-- /.direct-chat-msg -->
+
+                      </div>
+                      <!--/.direct-chat-messages-->
+
+                      <!-- Contacts are loaded here -->
+                      <div class="direct-chat-contacts">
+                        <ul class="contacts-list">
+                          <li>
+                            <a href="#">
+                              <img class="contacts-list-img" src="{% static 'Admin/dist/img/user1-128x128.jpg' %}" alt="User Image">
+
+                              <div class="contacts-list-info">
+                                    <span class="contacts-list-name">
+                                      Count Dracula
+                                      <small class="contacts-list-date pull-right">2/28/2015</small>
+                                    </span>
+                                <span class="contacts-list-msg">How have you been? I was...</span>
+                              </div>
+                              <!-- /.contacts-list-info -->
+                            </a>
+                          </li>
+                          <!-- End Contact Item -->
+                          <li>
+                            <a href="#">
+                              <img class="contacts-list-img" src="{% static 'Admin/dist/img/user1-128x128.jpg' %}" alt="User Image">
+
+                              <div class="contacts-list-info">
+                                    <span class="contacts-list-name">
+                                      Sarah Doe
+                                      <small class="contacts-list-date pull-right">2/23/2015</small>
+                                    </span>
+                                <span class="contacts-list-msg">I will be waiting for...</span>
+                              </div>
+                              <!-- /.contacts-list-info -->
+                            </a>
+                          </li>
+                          <!-- End Contact Item -->
+                          <li>
+                            <a href="#">
+                              <img class="contacts-list-img" src="{% static 'Admin/dist/img/user1-128x128.jpg' %}" alt="User Image">
+
+                              <div class="contacts-list-info">
+                                    <span class="contacts-list-name">
+                                      Nadia Jolie
+                                      <small class="contacts-list-date pull-right">2/20/2015</small>
+                                    </span>
+                                <span class="contacts-list-msg">I'll call you back at...</span>
+                              </div>
+                              <!-- /.contacts-list-info -->
+                            </a>
+                          </li>
+                          <!-- End Contact Item -->
+                          <li>
+                            <a href="#">
+                              <img class="contacts-list-img" src="{% static 'Admin/dist/img/user1-128x128.jpg' %}" alt="User Image">
+
+                              <div class="contacts-list-info">
+                                    <span class="contacts-list-name">
+                                      Nora S. Vans
+                                      <small class="contacts-list-date pull-right">2/10/2015</small>
+                                    </span>
+                                <span class="contacts-list-msg">Where is your new...</span>
+                              </div>
+                              <!-- /.contacts-list-info -->
+                            </a>
+                          </li>
+                          <!-- End Contact Item -->
+                          <li>
+                            <a href="#">
+                              <img class="contacts-list-img" src="{% static 'Admin/dist/img/user1-128x128.jpg' %}" alt="User Image">
+
+                              <div class="contacts-list-info">
+                                    <span class="contacts-list-name">
+                                      John K.
+                                      <small class="contacts-list-date pull-right">1/27/2015</small>
+                                    </span>
+                                <span class="contacts-list-msg">Can I take a look at...</span>
+                              </div>
+                              <!-- /.contacts-list-info -->
+                            </a>
+                          </li>
+                          <!-- End Contact Item -->
+                          <li>
+                            <a href="#">
+                              <img class="contacts-list-img" src="{% static 'Admin/dist/img/user1-128x128.jpg' %}" alt="User Image">
+
+                              <div class="contacts-list-info">
+                                    <span class="contacts-list-name">
+                                      Kenneth M.
+                                      <small class="contacts-list-date pull-right">1/4/2015</small>
+                                    </span>
+                                <span class="contacts-list-msg">Never mind I found...</span>
+                              </div>
+                              <!-- /.contacts-list-info -->
+                            </a>
+                          </li>
+                          <!-- End Contact Item -->
+                        </ul>
+                        <!-- /.contatcts-list -->
+                      </div>
+                      <!-- /.direct-chat-pane -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                      <form action="#" method="post">
+                        <div class="input-group">
+                          <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                          <span class="input-group-btn">
+                                <button type="button" class="btn btn-warning btn-flat">Send</button>
+                              </span>
+                        </div>
+                      </form>
+                    </div>
+                    <!-- /.box-footer-->
+                  </div>
+                  <!--/.direct-chat -->
+                </div>
+                    </div>
+                      <section id="expert" style="padding-top: 121px">
+		<span class="content-header">
+            <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">OUR <span>EXPERTS</span></h2>
+		</span>
+        <div class="me">
+  <ul class="nav nav-pills" style="text-align:center; padding-left: 50px;">
+    <li class="active" ><a data-toggle="pill" href="#menu0" ><b>Management</b></a></li>
+    <li><a data-toggle="pill" href="#menu1"><b>Engineering</b></a></li>
+    <li><a data-toggle="pill" href="#menu2"><b>Pharmacy</b></a></li>
+{#    <li><a data-toggle="pill" href="#menu3">Other</a></li>#}
+  </ul>
+        </div>
+  <br>
+  <div class="tab-content " style="padding-left: 50px;">
+    <div id="menu0" class="tab-pane fade in active">
+        <div class="row" id="management" style="display:block">
+            {% for each_expert in expert_m %}
+                <div class="col-md-5 col-md-auto">
+                      <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user" >
+
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                        <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username" onclick="location.href='coreHike/show_expert_profile/{{ each_expert.id }}'" style="cursor: pointer">{{ each_expert.name }}</h3>
+                          <h5 class="widget-user-desc">{{ each_expert.Designation }} &amp; {{ each_expert.Company_Name }}</h5>
+                            {% for expert_id, count in m_connect.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          {% if count == 'connected' %}
+                                                    <div  style="float: left;display: block"><button class="btn btn-sm btn-success" >Connected</button></div>
+                                              {% elif count == 'requested' %}
+                                                    <div id="{{ each_expert.id }}_requested" style="float: left;display: block"><button class="btn btn-sm btn-success" >Requested</button></div>
+                                              {% else %}
+                                                    <div id="{{ each_expert.id }}_connect" style="float: left;display: block"><button class="btn btn-sm btn-success" onclick="send_connect_request({{ each_expert.id }},{{ expert.id }})">Connect</button></div>
+                                              {% endif %}
+                                      {% endif %}
+                                                    <div id="{{ each_expert.id }}_requested" style="float: left;display: none"><button class="btn btn-sm btn-success" >Requested</button></div>
+
+                            {% endfor %}
+
+
+                            <div style="float: right"><button class="btn btn-sm btn-warning">Email</button></div>
+                        </div>
+                        <div class="widget-user-image">
+                          <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">
+                        </div>
+                        <div class="box-footer text-black">
+                          <div class="row">
+                            <div class="col-sm-4 border-right">
+                              <div class="description-block">
+                                {% for expert_id, count in m_lecture_delivered.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          <h5 class="description-header">{{ count }}</h5>
+                                      {% endif %}
+                                  {% endfor %}
+                                  <span class="description-text text-black">Video Delivered</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 border-right">
+                              <div class="description-block">
+                                {% for expert_id, count in m_follower_count.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          <h5 class="description-header">{{ count }}</h5>
+                                      {% endif %}
+                                  {% endfor %}
+                                <span class="description-text">FOLLOWERS</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-5">
+                              <div class="description-block">
+                                  {% for expert_id, count in m_reviwes.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          <h5 class="description-header text-black">{{ count }}</h5>
+                                      {% endif %}
+                                  {% endfor %}
+                                  <span class="description-text">Recommendation</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                          </div>
+
+                     <div class="box box-default collapsed-box">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">View More</h3>
+
+                          <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                            </button>
+                          </div>
+                          <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" style="display: none;">
+                             <ul>
+                                        <li class="list-group-item">
+                                          <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                                           <p>
+            {#                                     {%  for each_skill in each_expert.Skill %}#}
+            {#                                       <span class="label label-info">{{ each_skill }}</span>#}
+            {#                                   {% endfor %}#}
+                                               {{ each_expert.Skill }}
+
+                                           </p>
+                                      </li>
+                                    </ul>
+                            <table class="table">
+
+                                <tr>
+                                    <td>
+                                       Year Of Experience
+                                    </td>
+                                    <td>
+                                        {{ each_expert.Field_of_Experience }}
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                     About :  {{ each_expert.about }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Activity
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <!-- /.box-body -->
+
+                      <!-- /.box -->
+                    </div>
+                          <!-- /.row -->
+                        </div>
+                      </div>
+                      <!-- /.widget-user -->
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+       <div class="row" id="engineering">
+           {% for each_expert in expert_e %}
+                    <div class="col-md-5 col-md-auto">
+              <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user" >
+
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username" onclick="location.href='coreHike/show_expert_profile/{{ each_expert.id }}'" style="cursor: pointer">{{ each_expert.name }}</h3>
+                  <h5 class="widget-user-desc">{{ each_expert.Designation }} &amp; {{ each_expert.Company_Name }}</h5>
+                                {% for expert_id, count in e_connect.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          {% if count == 'connected' %}
+                                                    <div  style="float: left;display: block"><button class="btn btn-sm btn-success" >Connected</button></div>
+                                              {% elif count == 'requested' %}
+                                                    <div id="{{ each_expert.id }}_requested" style="float: left;display: block"><button class="btn btn-sm btn-success" >Requested</button></div>
+                                              {% else %}
+                                                    <div id="{{ each_expert.id }}_connect" style="float: left;display: block"><button class="btn btn-sm btn-success" onclick="send_connect_request({{ each_expert.id }},{{ expert.id }})">Connect</button></div>
+                                              {% endif %}
+                                      {% endif %}
+                                                    <div id="{{ each_expert.id }}_requested" style="float: left;display: none"><button class="btn btn-sm btn-success" >Requested</button></div>
+                            {% endfor %}
+                    <div style="float: right"><button class="btn btn-sm btn-warning">Email</button></div>
+                </div>
+                <div class="widget-user-image">
+                  <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">
+                </div>
+                <div class="box-footer text-black">
+                  <div class="row">
+                    <div class="col-sm-4 border-right">
+                      <div class="description-block">
+                          {% for expert_id, count in e_lecture_delivered.items %}
+                              {% if expert_id == each_expert.id %}
+                                  <h5 class="description-header">{{ count }}</h5>
+                              {% endif %}
+                          {% endfor %}
+                        <span class="description-text text-black">Video Delivered</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-3 border-right">
+                      <div class="description-block">
+                        {% for expert_id, count in e_follower_count.items %}
+                              {% if expert_id == each_expert.id %}
+                                  <h5 class="description-header">{{ count }}</h5>
+                              {% endif %}
+                          {% endfor %}
+                        <span class="description-text">FOLLOWERS</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-5">
+                      <div class="description-block">
+                                {% for expert_id, count in e_reviwes.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          <h5 class="description-header text-black">{{ count }}</h5>
+                                      {% endif %}
+                                  {% endfor %}
+                          <span class="description-text">Recommendation</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+
+             <div class="box box-default collapsed-box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">View More</h3>
+
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                  <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" style="display: none;">
+                     <ul>
+                                <li class="list-group-item">
+                                  <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                                   <p>
+    {#                                      {%  for each_skill in each_expert.Skill %}#}
+    {#                                   <span class="label label-info">{{ each_skill }}</span>#}
+    {#                               {% endfor %}#}
+                                        {{ each_expert.Skill }}
+                                   </p>
+                              </li>
+                            </ul>
+                    <table class="table">
+
+                        <tr>
+                            <td>
+                               Year Of Experience
+                            </td>
+                            <td>
+                                 {{ each_expert.Field_of_Experience }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                             About:  {{ each_expert.about }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Activity
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <!-- /.box-body -->
+
+              <!-- /.box -->
+            </div>
+                  <!-- /.row -->
+                </div>
+              </div>
+              <!-- /.widget-user -->
+            </div>
+           {% endfor %}
+        </div>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+       <div class="row" id="pharamacy">
+
+            {% for each_expert in expert_p %}
+                <div class="col-md-5 col-md-auto">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user" >
+
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username" onclick="location.href='coreHike/show_expert_profile/{{ each_expert.id }}'" style="cursor: pointer">{{ each_expert.name }}</h3>
+              <h5 class="widget-user-desc">{{ each_expert.Designation }} &amp; {{ each_expert.Company_Name }}</h5>
+                        {% for expert_id, count in p_connect.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          {% if count == 'connected' %}
+                                                    <div  style="float: left;display: block"><button class="btn btn-sm btn-success" >Connected</button></div>
+                                              {% elif count == 'requested' %}
+                                                    <div id="{{ each_expert.id }}_requested" style="float: left;display: block"><button class="btn btn-sm btn-success" >Requested</button></div>
+                                              {% else %}
+                                                    <div id="{{ each_expert.id }}_connect" style="float: left;display: block"><button class="btn btn-sm btn-success" onclick="send_connect_request({{ each_expert.id }},{{ expert.id }})">Connect</button></div>
+                                              {% endif %}
+                                      {% endif %}
+                                                     <div id="{{ each_expert.id }}_requested" style="float: left;display: none"><button class="btn btn-sm btn-success" >Requested</button></div>
+
+                            {% endfor %}                     <div style="float: right"><button class="btn btn-sm btn-warning">Email</button></div>
+            </div>
+            <div class="widget-user-image">
+              <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">
+            </div>
+            <div class="box-footer text-black">
+              <div class="row">
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    {% for expert_id, count in p_lecture_delivered.items %}
+                          {% if expert_id == each_expert.id %}
+                              <h5 class="description-header">{{ count }}</h5>
+                          {% endif %}
+                      {% endfor %}
+                      <span class="description-text text-black">Video Delivered</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-3 border-right">
+                  <div class="description-block">
+                    {% for expert_id, count in p_follower_count.items %}
+                          {% if expert_id == each_expert.id %}
+                              <h5 class="description-header">{{ count }}</h5>
+                          {% endif %}
+                      {% endfor %}
+                    <span class="description-text">FOLLOWERS</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-5">
+                  <div class="description-block">
+                                    {% for expert_id, count in p_reviwes.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          <h5 class="description-header text-black">{{ count }}</h5>
+                                      {% endif %}
+                                  {% endfor %}
+                      <span class="description-text">Recommendation</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+              </div>
+
+         <div class="box box-default collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">View More</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                </button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" style="display: none;">
+                 <ul>
+                            <li class="list-group-item">
+                              <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                               <p>
+{#                                     {%  for each_skill in each_expert.Skill %}#}
+{#                                   <span class="label label-info">{{ each_skill }}</span>#}
+{#                               {% endfor %}#}
+ {{ each_expert.Skill }}
+                               </p>
+                          </li>
+                        </ul>
+                <table class="table">
+
+                    <tr>
+                        <td>
+                           Year Of Experience
+                        </td>
+                        <td>
+                            {{ each_expert.Field_of_Experience }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                         About:  {{ each_expert.about }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Activity
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <!-- /.box-body -->
+
+          <!-- /.box -->
+        </div>
+              <!-- /.row -->
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+                <!-- Widget: user widget style 1 -->
+            {% endfor %}
+      </div>
+
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      {% for each_expert in expert_o %}
+                <div class="col-md-5 col-md-auto">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user" >
+
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username" onclick="location.href='coreHike/show_expert_profile/{{ each_expert.id }}'" style="cursor: pointer">{{ each_expert.name }}</h3>
+              <h5 class="widget-user-desc">{{ each_expert.Designation }} &amp; {{ each_expert.Company_Name }}</h5>
+                            {% for expert_id, count in o_connect.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          {% if count == 'connected' %}
+                                                    <div  style="float: left;display: block"><button class="btn btn-sm btn-success" >Connected</button></div>
+                                              {% elif count == 'requested' %}
+                                                    <div  style="float: left;display: block"><button class="btn btn-sm btn-success" >Requested</button></div>
+                                              {% else %}
+                                                    <div id="{{ each_expert.id }}_connect" style="float: left;display: block"><button class="btn btn-sm btn-success" onclick="send_connect_request({{ each_expert.id }},{{ expert.id }})">Connect</button></div>
+                                              {% endif %}
+                                      {% endif %}
+                                                    <div id="{{ each_expert.id }}_requested" style="float: left;display: none"><button class="btn btn-sm btn-success" >Requested</button></div>
+
+                            {% endfor %}                     <div style="float: right"><button class="btn btn-sm btn-warning">Email</button></div>
+            </div>
+            <div class="widget-user-image">
+              <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">
+            </div>
+            <div class="box-footer text-black">
+              <div class="row">
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    {% for expert_id, count in o_lecture_delivered.items %}
+                          {% if expert_id == each_expert.id %}
+                              <h5 class="description-header">{{ count }}</h5>
+                          {% endif %}
+                      {% endfor %}
+                      <span class="description-text text-black">Video Delivered</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-3 border-right">
+                  <div class="description-block">
+                    {% for expert_id, count in o_follower_count.items %}
+                          {% if expert_id == each_expert.id %}
+                              <h5 class="description-header">{{ count }}</h5>
+                          {% endif %}
+                      {% endfor %}
+                      <span class="description-text">FOLLOWERS</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-5">
+                  <div class="description-block">
+                                    {% for expert_id, count in o_reviwes.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          <h5 class="description-header text-black">{{ count }}</h5>
+                                      {% endif %}
+                                  {% endfor %}
+                      <span class="description-text">Recommendation</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+              </div>
+
+         <div class="box box-default collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">View More</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                </button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" style="display: none;">
+                 <ul>
+                            <li class="list-group-item">
+                              <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+{#                               {%  for each_skill in each_expert.Skill %}#}
+{#                                   <span class="label label-info">{{ each_skill }}</span>#}
+{#                               {% endfor %}#}
+                                 {{ each_expert.Skill }}
+                          </li>
+                        </ul>
+                <table class="table">
+
+                    <tr>
+                        <td>
+                           Year Of Experience
+                        </td>
+                        <td>
+                             {{ each_expert.Field_of_Experience }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                         About:  {{ each_expert.about }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Activity
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <!-- /.box-body -->
+
+          <!-- /.box -->
+        </div>
+              <!-- /.row -->
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+
+        {% endfor %}
+    </div>
+  </div>
+    </section>
+
+        </div>
+    </section>
+    <!-- /.content -->
+  </div>
+{% endblock %}

@@ -1,0 +1,212 @@
+{% extends 'student_base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load staticfiles %}
+{% block content_student %}
+    <script>
+    function set_expert_review(expert_id, student_id) {
+         $.ajax({url: "/set_expert_review/"+expert_id +"/"+ student_id, success: function(result){
+            $('#'+expert_id+'_expert_set_review').css('display','none');
+            }
+        });
+    }
+    </script>
+        <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+<!-- Content Header (Page header) -->
+                <br>
+                <br>
+<section class="content-header">
+<h1>
+Following details
+</h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="row">
+<!-- left column -->
+<div class="col-md-12">
+<!-- general form elements -->
+  {% if experts %}
+
+  <div class="nav-tabs-custom">
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#tab_1" data-toggle="tab">Expert List</a></li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="tab_1">
+    <div class="box">
+
+
+<div class="box-body">
+      <div class="row">
+    {% for each_expert in experts %}
+           <div class="col-md-5 col-md-auto">
+               <div class="box box-widget widget-user" >
+
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                        <div class="widget-user-header bg-aqua-active">
+
+                            <h3 class="widget-user-username" onclick="location.href='coreHike/show_expert_profile/{{ each_expert.id }}'" style="cursor: pointer">{{ each_expert.name }}</h3>
+                          <h5 class="widget-user-desc">{{ each_expert.Designation }} @ {{ each_expert.Company_Name }}</h5>
+                            <div style="float: right"><a class="btn btn-sm btn-warning" href="#{{ each_expert.id }}_expert_review">Review</a></div>
+                            <div id="{{ each_expert.id }}_expert_review"  class="overlay">
+                                                        <div class="popup">
+                                                            <h2 class="text-black">Review Expert</h2>
+                                                            <a class="close text-black" href="#">&times;</a>
+                                                            <div class="content">
+                                                                <div class="box box-primary">
+                                                            <div class="box-body box-profile text-black " style="background-color: lightcyan">
+                                                                <div class="text-black">Choose as boss</div> <input type="checkbox" name="expert_review" id="{{ each_expert.id }}_expert_set_review" onchange="set_expert_review({{ each_expert.id }},{{ each_student.id }})">
+
+                {#                                              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>#}
+                                                            </div>
+                                                            <!-- /.box-body -->
+                                                          </div>
+                                                            </div>
+                                                            </div>
+                                                  </div>
+
+                        </div>
+                        <div class="widget-user-image">
+                          <img class="img-circle" src="{{ MEDIA_URL }}{{ each_expert.Profile_piture.url }}" alt="User Avatar">
+                        </div>
+                        <div class="box-footer text-black">
+                          <div class="row">
+                            <div class="col-sm-4 border-right">
+                              <div class="description-block">
+                                {% if lect_p %}
+                                  {% for follower_count in lect_p %}
+                                        {% for key, value in follower_count.items %}
+                                            {% if key == each_expert.id %}
+                                                <h5 class="description-header">{{ value }}</h5>
+                                            {% endif %}
+                                        {% endfor %}
+                                  {% endfor %}
+                                {% else %}
+                                   <h5 class="description-header">0</h5>
+                              {% endif %}
+                                  <span class="description-text text-black">Video Delivered</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 border-right">
+                              <div class="description-block">
+
+
+                              {% if follower_p %}
+                                  {% for follower_count in follower_p %}
+                                        {% for key, value in follower_count.items %}
+                                            {% if key == each_expert.id %}
+                                                <h5 class="description-header">{{ value }}</h5>
+                                            {% endif %}
+                                        {% endfor %}
+                                  {% endfor %}
+                                {% else %}
+                                   <h5 class="description-header">0</h5>
+                              {% endif %}
+                                <span class="description-text">FOLLOWERS</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-5">
+                              <div class="description-block">
+                                  {% for expert_id, count in m_reviwes.items %}
+                                      {% if expert_id == each_expert.id %}
+                                          <h5 class="description-header text-black">{{ count }}</h5>
+                                      {% endif %}
+                                  {% endfor %}
+                                  <span class="description-text">Recommendation</span>
+                              </div>
+                              <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                          </div>
+
+                     <div class="box box-default collapsed-box">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">View More</h3>
+
+                          <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                            </button>
+                          </div>
+                          <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" style="display: none;">
+                             <ul>
+                                        <li class="list-group-item">
+                                          <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                                           <p>
+            {#                                     {%  for each_skill in each_expert.Skill %}#}
+            {#                                       <span class="label label-info">{{ each_skill }}</span>#}
+            {#                                   {% endfor %}#}
+                                               {{ each_expert.Skill }}
+
+                                           </p>
+                                      </li>
+                                    </ul>
+                            <table class="table">
+
+                                <tr>
+                                    <td>
+                                       Year Of Experience
+                                    </td>
+                                    <td>
+                                        {{ each_expert.Field_of_Experience }}
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                     About :  {{ each_expert.about }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Activity
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <!-- /.box-body -->
+
+                      <!-- /.box -->
+                    </div>
+                          <!-- /.row -->
+                        </div>
+                      </div>
+
+            </div>
+    {% endfor %}
+  </div>
+
+<!-- Widget: user widget style 1 -->
+<!-- /.widget-user -->
+ </div>
+</div>
+<!-- /.box-body -->
+</div>
+  </div>
+
+  <!-- /.tab-pane -->
+</div>
+ {% else %}
+      <h1>You are not following any expert yet.<br><br>Start Following Now! <a href="/student_index#Expert">Show Expert</a></h1>
+  {% endif %}
+</div>
+<!-- /.box -->
+</div>
+<!-- /.row -->
+</section>
+</div>
+        <!-- /.content -->
+{% endblock %}

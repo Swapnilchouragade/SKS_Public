@@ -1,0 +1,77 @@
+{% extends 'expert_base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content_expert %}
+
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+<br>
+  <br>
+    <section class="content">
+   <div class="box box-primary">
+            <!-- form start -->
+            <form role="form" method="post">
+            {% csrf_token %}
+              <div class="box-body">
+               <table>
+                  {% for field in form %}
+                      {% if  field.label == 'Expert id'%}
+                          {% elif field.label == 'Date'%}
+                           <tr>
+                              <td>
+                                 <label> {{ field.label }} </label>
+                              </td>
+                              <td>
+                                  {% render_field field type='date' %}
+                              </td>
+                          </tr>
+                          {% elif field.label == 'Time'%}
+                           <tr>
+                              <td>
+                                 <label> {{ field.label }} </label>
+                              </td>
+                              <td>
+                                  {% render_field field type='time' %}
+                              </td>
+                          </tr>
+
+                      {% else %}
+
+                          <tr>
+                              <td>
+                                 <label> {{ field.label }} </label>
+                              </td>
+                              <td>
+                                  {{ field }}
+                              </td>
+                          </tr>
+                      {% endif %}
+                      <tr>
+                      <td width="4px">
+                            <br>
+                      </td>
+                      <td>
+
+                      </td>
+                      </tr>
+                  {% endfor %}
+                </table>
+
+
+
+
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}

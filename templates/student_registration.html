@@ -1,0 +1,308 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block content %}
+    <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="{%static 'Admin/login/css/bootstrap.min.css'%}">
+		<link rel="stylesheet" href="{%static 'Admin/login/css/font-awesome.min.css'%}">
+		<link rel="stylesheet" href="{%static 'Admin/login/css/templatemo-style.css'%}">
+		<script src="{%static 'Admin/login/js/jquery.js'%}"></script>
+		<script src="{%static 'Admin/login/js/bootstrap.min.js'%}"></script>
+        <script src="{%static 'Admin/login/js/jquery.singlePageNav.min.js'%}"></script>
+		<script src="{%static 'Admin/login/js/typed.js'%}"></script>
+		<!-- <script src="js/wow.min.js"></script> -->
+		<script src="{%static 'Admin/login/js/custom.js'%}"></script>
+     <script>
+    function isNumber(evt) {
+  evt = (evt) ? evt : window.event;
+  var charCode = (evt.which) ? evt.which : evt.keyCode;
+  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+    alert("Please enter only Numbers.");
+    return false;
+  }
+
+  return true;
+}
+
+function ValidateNo() {
+  var phoneNo = document.getElementById('mobile');
+
+  if (phoneNo.value == "" || phoneNo.value == null) {
+    alert("Please enter your Mobile No.");
+    return false;
+  }
+  if (phoneNo.value.length < 10 || phoneNo.value.length > 10) {
+    alert("Mobile No. is not valid, Please Enter 10 Digit Mobile No.");
+    return false;
+  }
+
+  return true;
+}
+    </script>
+        <style>
+                        .dropbtn {
+
+                          padding: 16px;
+                          font-size: 16px;
+                          border: none;
+                          cursor: pointer;
+                        }
+
+                        .dropdown {
+                          position: relative;
+                          display: inline-block;
+                        }
+
+                        .dropdown-content {
+                          display: none;
+                          position: absolute;
+                          background-color: #f9f9f9;
+                          min-width: 160px;
+                          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                          z-index: 1;
+                        }
+
+                        .dropdown-content a {
+                          color: black;
+                          padding: 12px 16px;
+                          text-decoration: none;
+                          display: block;
+                        }
+
+                        .dropdown-content a:hover {background-color: #f1f1f1}
+
+                        .dropdown:hover .dropdown-content {
+                          display: block;
+                        }
+
+                        .dropdown:hover .dropbtn {
+                          background-color: #3e8e41;
+                        }
+                        </style>
+<style>
+body {
+    font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #404040;
+   {% comment %} background: #596778;{% endcomment %}
+    background-image: url(/static/Admin/B.jpg);
+      background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+
+}
+#rcorners2 {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+}
+{% comment %}div.register-box-body
+{
+width: 115px;
+padding: 10px;
+border: 2px solid #000;
+border-radius: 15px;
+-moz-border-radius: 15px;
+}{% endcomment %}
+</style>
+        <header class="navbar-fixed-top" style="background-color: black">
+                <div class="container" style="background-color: black">
+                    <div class="row" >
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <p style="color:white"><i class="fa fa-phone fa-lg "></i><span > Phone</span>9620950615</p>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <p style="color:white"><i class="fa fa-envelope-o fa-lg"></i><span> Email</span><a href="#" style="color:white">info@corhike.com</a></p>
+                        </div>
+                        <div class="col-md-5 col-sm-4 col-xs-12">
+                            <ul class="social-icon">
+                                <li class="text-white"><span style="color:white">Meet us on</span></li>
+                                <li><a href="#" class="fa fa-facebook fa-lg"></a></li>
+    {#                            <li><a href="#" class="fa fa-twitter"></a></li>#}
+    {#                            <li><a href="#" class="fa fa-instagram"></a></li>#}
+                                <li><a href="/login">LOGIN</a></li>
+                                <li><a href="/check_login" class="fa fa-user-circle fa-lg"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <nav class="navbar navbar-default  templatemo-nav" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon icon-bar"></span>
+                            <span class="icon icon-bar"></span>
+                            <span class="icon icon-bar"></span>
+                        </button>
+                        <a href="/visitor" class="navbar-brand">CORHIKE</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/visitor#top">HOME</a></li>
+                            <li><a href="/visitor#about">ABOUT</a></li>
+                            <li><a href="/visitor#service">NEWS</a></li>
+                            <li><a href="/visitor#expert">EXPERT</a></li>
+                            <li><a href="/visitor#service">SERVICE</a></li>
+    {#						<li><a href="#videos">VIDEO</a></li>#}
+                            <li><a href="/visitor#contact">CONTACT</a></li>
+                            <li></li>
+
+                            <div class="dropdown" style="padding-top:15px;">
+                              <li><a  class="dropbtn" style="text-decoration: none;">REGISTER</a></li>
+                              <div class="dropdown-content">
+                              <a href="/student_registration">Student </a>
+                              <a href="/register_expert">Expert</a>
+                              </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            </header>
+<br>
+    <br>
+    <br>
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="" style="margin: 7%;">
+
+
+                  <div class="register-box-body" id="rcorners3" style="border-radius:25px; color: #666; opacity: 0.8;">
+
+                    <h4 class="login-box-msg text-bold " style="font-weight: bold; ">Register New Student Membership</h4>
+                   <form action="/student_registration/" method="post" enctype="multipart/form-data">
+                     {% csrf_token %}
+                                              {{ form.non_field_errors }}
+
+                                                  {% for hidden_field in form.hidden_fields %}
+                                                    {{ hidden_field.errors }}
+                                                    {{ hidden_field }}
+                                                  {% endfor %}
+<div class="row">
+    <div class="col-md-6">
+           <table>
+                                                    {% for field in form.visible_fields|slice:":4" %}
+                                                      <tr>
+                                                        <th>{{ field.label_tag }}</th>
+                                                        <td>
+                                                          {{ field.errors }}
+                                                          {% render_field field class="form-control" %}
+                                                          {{ field.help_text }}
+                                                        </td>
+                                                      </tr>
+                                                        <tr>
+                                                        <td width="2px">
+                                                            <br>
+                                                        </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                  </table>
+    </div>
+     <div class="col-md-6">
+           <table>
+                                                    {% for field in form.visible_fields|slice:"4:" %}
+                                                      {% if field.label == 'Mobile' %}
+                                                           <th>{{ field.label_tag }}</th>
+                                                        <td>
+                                                          {{ field.errors }}
+                                                            <input type="text" name="mobile"  class="form-control" id="mobile"  onkeypress="return isNumber(event)" required >
+                                                          {{ field.help_text }}
+                                                        </td>
+                                                      </tr>
+                                                          {% elif field.label == 'Profile piture' %}
+                                                           <th>{{ field.label_tag }}</th>
+                                                        <td>
+                                                          {{ field.errors }}
+                                                            <input type="file" name="Profile_piture"  class="form-control" id="Profile_piture" value=""   required >
+                                                          {{ field.help_text }}
+                                                        </td>
+                                                      </tr>
+                                                        {% else %}
+                                                      <tr>
+                                                        <th>{{ field.label_tag }}</th>
+                                                        <td>
+                                                          {{ field.errors }}
+                                                          {% render_field field class="form-control" %}
+                                                          {{ field.help_text }}
+                                                        </td>
+                                                      </tr>
+                                                        <tr>
+                                                        <td width="2px">
+                                                            <br>
+                                                        </td>
+                                                        </tr>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                  </table>
+    </div>
+</div>
+
+
+
+
+                      <div class="row">
+{#                        <div class="col-xs-8">#}
+{#                          <div class="checkbox icheck">#}
+{#                            <label>#}
+{#                              <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;">#}
+{#                                  <input type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">#}
+{#                                  <ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">#}
+{##}
+{#                                  </ins></div>#}
+{##}
+{#                                <a href="#myModal"  data-toggle="modal" data-target="#myModal"> I agree to the terms</a>#}
+{#                            </label>#}
+{#                          </div>#}
+{#                        </div>#}
+                          <!--  Term And Condition -->
+{#                          <div class="modal fade" id="myModal">#}
+{#    <div class="modal-dialog">#}
+{#      <div class="modal-content">#}
+{##}
+{#        <!-- Modal Header -->#}
+{#        <div class="modal-header">#}
+{#          <h4 class="modal-title">Modal Heading</h4>#}
+{#          <button type="button" class="close" data-dismiss="modal">&times;</button>#}
+{#        </div>#}
+{##}
+{#        <!-- Modal body -->#}
+{#        <div class="modal-body">#}
+{#          Modal body..#}
+{#        </div>#}
+{##}
+{#        <!-- Modal footer -->#}
+{#        <div class="modal-footer">#}
+{#          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>#}
+{#        </div>#}
+{##}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+
+                          <!-- Term and Condition -->
+                        <!-- /.col -->
+                        <div class="col-xs-4">
+                          <button type="submit" class="btn btn-info btn-block btn-flat" onclick=" return ValidateNo()">Register</button>
+                        </div>
+                        <!-- /.col -->
+                      </div>
+                    </form>
+                    <a href="/login" class="text-center text-warning text-bold">I already have a membership</a>
+                  </div>
+                  <!-- /.form-box -->
+
+
+            </div>
+        </div>
+    </div>
+{#    <script>#}
+{# var elem= document.getElementByClassName("modal-backdrop")[0];#}
+{# //   var elem = document.getElementById("myDiv");#}
+{#    elem.parentNode.removeChild(elem);#}
+{##}
+{#//$(".modal-backdrop fade in").remove();#}
+{#    </script>#}
+    </div>
+{% endblock %}

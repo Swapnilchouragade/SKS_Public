@@ -1,0 +1,72 @@
+{% extends 'expert_base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content_expert %}
+    <script>
+    function accept_follower_req(id) {
+        window.location.href = '/coreHike/follower_update/'+id
+    }
+    function remove_follower_req(id) {
+        window.location.href = '/coreHike/remove_followers/'+id
+    }
+    function block_follower_req(id) {
+        window.location.href = '/coreHike/block_follower/'+id
+    }
+
+</script>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+<br>
+<br>
+    <section class="content-header">
+      <h1>
+        Lecture History
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-10">
+          <!-- general form elements -->
+
+            {% for each_lecture in add_lect %}
+                <div class="box box-warning box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">{{ each_lecture.title }}</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" style="">
+              <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea class="form-control" id="description" readonly style="border:0">{{ each_lecture.description }}</textarea>
+				  </div>
+                <div class="form-group">
+                  <label for="time">Time</label>
+                  <input type="text" id="time" value="{{ each_lecture.time }}" style="border:0" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="date">Date</label>
+                  <input type="text" id="date" style="border:0" value="{{ each_lecture.date }}" readonly>
+                </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+            {% endfor %}
+
+          </div>
+          <!-- /.box -->
+        </div>
+</section>
+
+      </div>
+{% endblock %}

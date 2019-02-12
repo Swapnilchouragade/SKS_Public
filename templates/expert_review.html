@@ -1,0 +1,157 @@
+{% extends 'expert_index.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load staticfiles %}
+{% block content_expert %}
+{% csrf_token %}
+    <link rel="stylesheet" href="{% static 'Admin/review/css/review_css.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <div class="content-wrapper">
+
+                <section class="content" >
+
+                     <center><h2> Expert Review</h2></center>
+                        <div class="rb-box" style="color:white">
+
+  <!-- Radio Button Module -->
+  <p>1: Communication Skill</p>
+  <div id="rb-1" class="rb">
+    <div class="rb-tab rb-tab-active" data-value="1">
+      <div class="rb-spot">
+        <span class="rb-txt">1</span>
+      </div>
+    </div><div class="rb-tab" data-value="2">
+      <div class="rb-spot">
+        <span class="rb-txt">2</span>
+      </div>
+    </div><div class="rb-tab" data-value="3">
+      <div class="rb-spot">
+        <span class="rb-txt">3</span>
+      </div>
+    </div><div class="rb-tab" data-value="4">
+      <div class="rb-spot">
+        <span class="rb-txt">4</span>
+      </div>
+    </div><div class="rb-tab" data-value="5">
+      <div class="rb-spot">
+        <span class="rb-txt">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Radio Button Module -->
+  <p>2. Domain Knowledge</p>
+  <div id="rb-2" class="rb">
+    <div class="rb-tab" data-value="1">
+      <div class="rb-spot">
+        <span class="rb-txt">1</span>
+      </div>
+    </div><div class="rb-tab rb-tab-active" data-value="2">
+      <div class="rb-spot">
+        <span class="rb-txt">2</span>
+      </div>
+    </div><div class="rb-tab" data-value="3">
+      <div class="rb-spot">
+        <span class="rb-txt">3</span>
+      </div>
+    </div><div class="rb-tab" data-value="4">
+      <div class="rb-spot">
+        <span class="rb-txt">4</span>
+      </div>
+    </div><div class="rb-tab" data-value="5">
+      <div class="rb-spot">
+        <span class="rb-txt">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Radio Button Module -->
+  <p>3. Team Skill</p>
+  <div id="rb-3" class="rb">
+    <div class="rb-tab" data-value="1">
+      <div class="rb-spot">
+        <span class="rb-txt">1</span>
+      </div>
+    </div><div class="rb-tab" data-value="2">
+      <div class="rb-spot">
+        <span class="rb-txt">2</span>
+      </div>
+    </div><div class="rb-tab rb-tab-active" data-value="3">
+      <div class="rb-spot">
+        <span class="rb-txt">3</span>
+      </div>
+    </div><div class="rb-tab" data-value="4">
+      <div class="rb-spot">
+        <span class="rb-txt">4</span>
+      </div>
+    </div><div class="rb-tab" data-value="5">
+      <div class="rb-spot">
+        <span class="rb-txt">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Radio Button Module -->
+  <p>4.Open to learning</p>
+  <div id="rb-4" class="rb">
+    <div class="rb-tab" data-value="1">
+      <div class="rb-spot">
+        <span class="rb-txt">1</span>
+      </div>
+    </div><div class="rb-tab" data-value="2">
+      <div class="rb-spot">
+        <span class="rb-txt">2</span>
+      </div>
+    </div><div class="rb-tab" data-value="3">
+      <div class="rb-spot">
+        <span class="rb-txt">3</span>
+      </div>
+    </div><div class="rb-tab rb-tab-active" data-value="4">
+      <div class="rb-spot">
+        <span class="rb-txt">4</span>
+      </div>
+    </div><div class="rb-tab" data-value="5">
+      <div class="rb-spot">
+        <span class="rb-txt">5</span>
+      </div>
+    </div>
+  </div>
+ <p>5.Would you like to choose as a boss</p>
+  <div id="rb-5" class="rb">
+    <div class="rb-tab" data-value="1">
+      <div class="rb-spot">
+        <span class="rb-txt">1</span>
+      </div>
+    </div><div class="rb-tab" data-value="2">
+      <div class="rb-spot">
+        <span class="rb-txt">2</span>
+      </div>
+    </div><div class="rb-tab" data-value="3">
+      <div class="rb-spot">
+        <span class="rb-txt">3</span>
+      </div>
+    </div><div class="rb-tab rb-tab-active" data-value="4">
+      <div class="rb-spot">
+        <span class="rb-txt">4</span>
+      </div>
+    </div><div class="rb-tab" data-value="5">
+      <div class="rb-spot">
+        <span class="rb-txt">5</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Button -->
+  <div class="button-box">
+    <button class="button trigger">Submit!</button>
+  </div>
+
+</div>
+                        <script src="{% static 'Admin/review/js/review_js.js'%}"></script>
+
+                </section>
+                <!-- /.content -->
+              </div>
+{% endblock %}
